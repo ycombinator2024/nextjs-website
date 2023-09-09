@@ -15,7 +15,6 @@ interface MobileDrawerProps {
   isNavOpen: boolean;
 }
 
-const LinkStyles = "mr-8 flex items-center";
 export default function MobileDrawer({
   setIsNavOpen,
   isNavOpen,
@@ -53,14 +52,14 @@ export default function MobileDrawer({
       size="full"
       onClose={() => setIsNavOpen(!isNavOpen)}
     >
-      <DrawerContent mt="87px" className="text-2xl">
+      <DrawerContent mt="85px" className="text-2xl">
         <DrawerBody
           p={0}
           className="flex flex-col items-center text-3xl gap-10 mt-10"
         >
           <Link
             href="/"
-            className={`mr-8  whitespace-nowrap outline-none ${
+            className={`  whitespace-nowrap text-center outline-none ${
               isHome ? "text-blue" : ""
             }`}
             onClick={() => setIsNavOpen(false)}
@@ -70,46 +69,42 @@ export default function MobileDrawer({
 
           <Link
             href="/calendar"
-            className={LinkStyles}
+            className={`  ${isCalendar ? "text-blue" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            <span className={`  ${isCalendar ? "text-blue" : ""}`}>
-              Calendar
-            </span>
+            Calendar
           </Link>
 
           <Link
             href="/materials"
-            className={LinkStyles}
+            className={`  ${isMaterials ? "text-blue" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            <span className={`  ${isMaterials ? "text-blue" : ""}`}>
-              Materials
-            </span>
+            Materials
           </Link>
 
           <Link
             href="/pay"
-            className={LinkStyles}
+            className={`  ${isPay ? "text-blue" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            <span className={`  ${isPay ? "text-blue" : ""}`}>Pay</span>
+            Pay
           </Link>
 
           <Link
             href="/photos"
-            className={LinkStyles}
+            className={`  ${isPhotos ? "text-blue" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            <span className={`  ${isPhotos ? "text-blue" : ""}`}>Photos</span>
+            Photos
           </Link>
 
           <Link
             href="/merch"
-            className={LinkStyles}
+            className={`  ${isMerch ? "text-blue" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            <span className={`  ${isMerch ? "text-blue" : ""}`}>Merch</span>
+            Merch
           </Link>
         </DrawerBody>
       </DrawerContent>

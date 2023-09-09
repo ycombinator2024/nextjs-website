@@ -15,7 +15,7 @@ export default function CalendarPage() {
     <div>
       <iframe
         src="https://calendar.google.com/calendar/embed?src=c_4031092576fadd6e2d9dbf6ef0b6d891e5e877bed846f4135f9301a9c397e662%40group.calendar.google.com&ctz=America%2FLos_Angeles"
-        className="w-[100vw] h-[calc(100svh-87px)]"
+        className="w-[100vw] h-[calc(100svh-85px)]"
       ></iframe>
       {/*<Calendar apiKey={API_KEY} calendars={calendars} />*/}
     </div>

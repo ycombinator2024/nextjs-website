@@ -9,7 +9,12 @@ export default function Navbar() {
       <div className="flex flex-col w-[95vw] footerXM:w-[90vw] footerSM:w-[85vw] sm:w-[80vw] xxl:w-[1280px] ">
         <nav className="flex text-lg justify-center items-center">
           <Link href="/" className="mr-auto ml-5 my-2">
-            <Image src="/favicon.png" width={53} height={70} alt="LA Lager" />
+            <Image
+              src="/favicon_adj.png"
+              width={51}
+              height={68}
+              alt="LA Lager"
+            />
           </Link>
           <WebNav />
           <MobileNav />

@@ -11,7 +11,7 @@ import {
 
 export default function Pay() {
   return (
-    <div className="h-[calc(100svh-87px)] flex items-center justify-center">
+    <div className="h-[calc(100svh-85px)] flex items-center justify-center">
       <PayPalScriptProvider
         options={{
           clientId:

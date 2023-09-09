@@ -3,6 +3,6 @@ import React from "react";
 
 export default function Merch() {
   return (
-    <div className="h-[calc(100svh-87px)] flex items-center justify-center"></div>
+    <div className="h-[calc(100svh-85px)] flex items-center justify-center"></div>
   );
 }

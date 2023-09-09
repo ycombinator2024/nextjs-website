@@ -6,7 +6,7 @@ function HomePage() {
   return (
     <iframe
       src="https://razvedchik.org/"
-      className="w-[100vw] h-[calc(100svh-87px)]"
+      className="w-[100vw] h-[calc(100svh-85px)]"
     ></iframe>
   );
 }
