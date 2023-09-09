@@ -63,17 +63,26 @@ export default function MobileDrawer({
             className={`mr-8  whitespace-nowrap outline-none ${
               isHome ? "text-blue" : ""
             }`}
+            onClick={() => setIsNavOpen(false)}
           >
             Home
           </Link>
 
-          <Link href="/calendar" className={LinkStyles}>
+          <Link
+            href="/calendar"
+            className={LinkStyles}
+            onClick={() => setIsNavOpen(false)}
+          >
             <span className={`  ${isCalendar ? "text-blue" : ""}`}>
               Calendar
             </span>
           </Link>
 
-          <Link href="/materials" className={LinkStyles}>
+          <Link
+            href="/materials"
+            className={LinkStyles}
+            onClick={() => setIsNavOpen(false)}
+          >
             <span className={`  ${isMaterials ? "text-blue" : ""}`}>
               Materials
             </span>
@@ -81,16 +90,25 @@ export default function MobileDrawer({
 
           <Link
             href="/pay"
-            className={`mr-8   whitespace-nowrap ${isPay ? "text-blue" : ""}`}
+            className={LinkStyles}
+            onClick={() => setIsNavOpen(false)}
           >
-            Pay
+            <span className={`  ${isPay ? "text-blue" : ""}`}>Pay</span>
           </Link>
 
-          <Link href="/photos" className={LinkStyles}>
+          <Link
+            href="/photos"
+            className={LinkStyles}
+            onClick={() => setIsNavOpen(false)}
+          >
             <span className={`  ${isPhotos ? "text-blue" : ""}`}>Photos</span>
           </Link>
 
-          <Link href="/merch" className={LinkStyles}>
+          <Link
+            href="/merch"
+            className={LinkStyles}
+            onClick={() => setIsNavOpen(false)}
+          >
             <span className={`  ${isMerch ? "text-blue" : ""}`}>Merch</span>
           </Link>
         </DrawerBody>

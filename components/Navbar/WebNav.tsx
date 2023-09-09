@@ -3,6 +3,9 @@ import { useRouter } from "next/router";
 
 export default function WebNav() {
   const router = useRouter();
+
+  const LinkStyles = "mr-8 flex items-center";
+
   let isHome = false;
   let isCalendar = false;
   let isPay = false;
@@ -43,38 +46,33 @@ export default function WebNav() {
           </Link>
         </li>
         <li>
-          <Link href="/calendar" className="mr-8 flex items-center">
+          <Link href="/calendar" className={LinkStyles}>
             <span className={`link  ${isCalendar ? "selected-link" : ""}`}>
               Calendar
             </span>
           </Link>
         </li>
         <li>
-          <Link href="/materials" className="mr-8 flex items-center">
+          <Link href="/materials" className={LinkStyles}>
             <span className={`link  ${isMaterials ? "selected-link" : ""}`}>
               Materials
             </span>
           </Link>
         </li>
         <li>
-          <Link
-            href="/pay"
-            className={`mr-8  link whitespace-nowrap ${
-              isPay ? "selected-link" : ""
-            }`}
-          >
-            Pay
+          <Link href="/pay" className={LinkStyles}>
+            <span className={`link  ${isPay ? "selected-link" : ""}`}>Pay</span>
           </Link>
         </li>
         <li>
-          <Link href="/photos" className="mr-8 flex items-center">
+          <Link href="/photos" className={LinkStyles}>
             <span className={`link  ${isPhotos ? "selected-link" : ""}`}>
               Photos
             </span>
           </Link>
         </li>
         <li>
-          <Link href="/merch" className="mr-8 flex items-center">
+          <Link href="/merch" className={LinkStyles}>
             <span className={`link  ${isMerch ? "selected-link" : ""}`}>
               Merch
             </span>
