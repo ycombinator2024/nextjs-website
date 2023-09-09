@@ -7,6 +7,7 @@ export default function WebNav() {
   let isCalendar = false;
   let isPay = false;
   let isPhotos = false;
+  let isMerch = false;
   if (router.pathname == "/") {
     isHome = true;
   }
@@ -20,13 +21,16 @@ export default function WebNav() {
   if (router.pathname == "/photos") {
     isPhotos = true;
   }
+  if (router.pathname == "/merch") {
+    isMerch = true;
+  }
 
   return (
     <div className="hidden ml:flex items-center">
       <ol className="flex flex-nowrap items-center">
         <li>
           <Link
-            href="/home"
+            href="/"
             className={`mr-8 link whitespace-nowrap ${
               isHome ? "selected-link" : ""
             }`}
@@ -55,6 +59,13 @@ export default function WebNav() {
           <Link href="/photos" className="mr-8 flex items-center">
             <span className={`link  ${isPhotos ? "selected-link" : ""}`}>
               Photos
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link href="/merch" className="mr-8 flex items-center">
+            <span className={`link  ${isMerch ? "selected-link" : ""}`}>
+              Merch
             </span>
           </Link>
         </li>

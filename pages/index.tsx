@@ -8,7 +8,7 @@ function HomePage() {
       <div className="">
         <iframe
           src="https://razvedchik.org/"
-          className="w-screen h-screen"
+          className="w-[100vw] h-[calc(100svh-87px)]"
         ></iframe>
       </div>
     </div>
