@@ -2,11 +2,14 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
+import { ChakraProvider } from "@chakra-ui/react";
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ChakraProvider>
       <Head>
         <meta charSet="UTF-8" />
+        <title>St. George Pathfinders</title>
         <meta name="application-name" content="LA Lager" />
         <meta name="keywords" content="scouts" />
         <meta name="author" content="Nikita Malinovsky, Sasha Malinovsky" />
@@ -21,6 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <Navbar />
       <Component {...pageProps} />
-    </>
+    </ChakraProvider>
   );
 }

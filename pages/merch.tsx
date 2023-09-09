@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactPhotoCollage } from "react-photo-collage";
+// import { ReactPhotoCollage } from "react-photo-collage";
 
 export default function Merch() {
   return (
