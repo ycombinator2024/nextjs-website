@@ -21,10 +21,13 @@ export default function Photos() {
   const divArray = Array.from({ length: 7 }, (_, index) => index);
   return (
     <div className="py-6 pr-4 bg-gray">
-      <div className="gallery ">
+      <div className="columns-3">
         {divArray.map((index: number) => {
           return (
-            <div className="pics" key={index}>
+            <div
+              className="cursor-pointer transition-all duration-350 ease-in-out mb-5"
+              key={index}
+            >
               <img
                 src={`/photos/${index}.jpg`}
                 alt={`LA Lager ${index}`}
