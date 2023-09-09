@@ -1,6 +1,7 @@
 import Link from "next/link";
 import WebNav from "./WebNav";
 import Image from "next/image";
+import MobileNav from "./MobileNav";
 
 export default function Navbar() {
   return (
@@ -11,6 +12,7 @@ export default function Navbar() {
             <Image src="/favicon.png" width={53} height={70} alt="LA Lager" />
           </Link>
           <WebNav />
+          <MobileNav />
         </nav>
       </div>
       <hr className="h-[1px] opacity-50 bg-[#C2C2C2] w-full border-0 rounded"></hr>
