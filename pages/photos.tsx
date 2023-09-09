@@ -20,8 +20,8 @@ import Link from "next/link";
 export default function Photos() {
   const divArray = Array.from({ length: 7 }, (_, index) => index);
   return (
-    <div className="h-[calc(100svh-85px)] py-6 pr-4 bg-light">
-      <div className="columns-3">
+    <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light">
+      <div className="columns-3 ">
         {divArray.map((index: number) => {
           return (
             <div
