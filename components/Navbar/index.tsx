@@ -11,15 +11,19 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { formatCurrency } from "@/utilities/formatCurrency";
 import { CartItem } from "@/components/Shopping/CartItem";
 import storeItems from "@/data/items.json";
-
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
+
+import { loadStripe } from "@stripe/stripe-js";
+
 export default function Navbar() {
   const { openCart, cartQuantity, closeCart, cartItems, isOpen } =
     useShoppingCart();
+
   return (
     <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-white ">
       <div className="flex flex-col w-[95vw] footerXM:w-[90vw] footerSM:w-[85vw] sm:w-[80vw] xxl:w-[1280px] ">
@@ -45,7 +49,6 @@ export default function Navbar() {
 
           <DrawerBody>
             {cartItems.map((item) => {
-
               return <CartItem key={item.id} {...item} />;
             })}
             <div className="text-lg mb-8">
@@ -76,7 +79,12 @@ export default function Navbar() {
                 }, 0)
               )}
             </div>
-            <button className="flex gap-1 items-center bg-green rounded-lg px-2 py-1 text-lg">
+            <button
+              onClick={() => {
+                closeCart();
+              }}
+              className="flex gap-1 items-center bg-green rounded-lg px-2 py-1 text-lg"
+            >
               Checkout <MdOutlineShoppingCartCheckout />
             </button>
           </DrawerBody>

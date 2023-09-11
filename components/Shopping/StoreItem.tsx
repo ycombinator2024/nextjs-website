@@ -34,7 +34,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
         <div className="flex items-center justify-center">
           <button
             className={`border rounded-full py-1 px-2 mr-1 ${
-              size === "SM" && "bg-light"
+              size === "SM" && "bg-lightBlue"
             }`}
             onClick={() => setSize("SM")}
           >
@@ -42,7 +42,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
           </button>{" "}
           <button
             className={`border  rounded-full py-1 px-2 mr-1 ${
-              size === "MD" && "bg-light"
+              size === "MD" && "bg-lightBlue"
             }`}
             onClick={() => setSize("MD")}
           >
@@ -50,7 +50,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
           </button>{" "}
           <button
             className={`border  rounded-full py-1 px-2 mr-1 ${
-              size === "LG" && "bg-light"
+              size === "LG" && "bg-lightBlue"
             }`}
             onClick={() => setSize("LG")}
           >
@@ -58,7 +58,7 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
           </button>{" "}
           <button
             className={`border rounded-full py-1 px-2 mr-1 ${
-              size === "XL" && "bg-light"
+              size === "XL" && "bg-lightBlue"
             }`}
             onClick={() => setSize("XL")}
           >
