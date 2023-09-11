@@ -19,6 +19,7 @@ module.exports = {
       light: "#f9f9f9 ", //grey
       lightHover: "#E0E0E0",
       analogueBlue: "#0900FF",
+      yellow: "#FFCC70",
     },
     fontFamily: {
       sans: ["sans-serif", "sans-serif"],
