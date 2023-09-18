@@ -1,23 +1,35 @@
 import React from "react";
-// import Calendar from "@ericz1803/react-google-calendar";
+import useSWR from "swr";
+import { toMonth } from "@/utils/mapping";
 
-const API_KEY =
-  "665067831162-hmvujsat9vol7ebvhcp09hfqk69q7svn.apps.googleusercontent.com";
-let calendars = [
-  {
-    calendarId:
-      "c_4031092576fadd6e2d9dbf6ef0b6d891e5e877bed846f4135f9301a9c397e662@group.calendar.google.com",
-  },
-];
+export default function Calendar() {
+  let url = `/api/calendar/get-events`;
 
-export default function CalendarPage() {
+  const { data: events, mutate } = useSWR(url, async () => {
+    const res = await fetch(url);
+    return res.json();
+  });
+
   return (
-    <div>
-      <iframe
-        src="https://calendar.google.com/calendar/embed?src=c_4031092576fadd6e2d9dbf6ef0b6d891e5e877bed846f4135f9301a9c397e662%40group.calendar.google.com&ctz=America%2FLos_Angeles"
-        className="w-[100vw] h-[calc(100svh-85px)]"
-      ></iframe>
-      {/*<Calendar apiKey={API_KEY} calendars={calendars} />*/}
+    <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light flex flex-col items-center">
+      {events && events.length > 0 && (
+        <div className="flex flex-col gap-5">
+          {events.map((event: any, index: number) => {
+            return (
+              <div key={index} className="flex items-center gap-5">
+                <div className="flex flex-col items-center ">
+                  <span>{toMonth(event.date.split("/")[0])}</span>
+                  <span>{event.date.split("/")[1]}</span>
+                </div>
+                <div>
+                  {event.from} - {event.to}
+                </div>
+                <div>{event.event_name}</div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

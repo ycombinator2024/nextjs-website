@@ -29,6 +29,7 @@ const childVariants = {
 export default function MerchPage() {
   return (
     <div className="flex items-center justify-center pt-6 bg-light">
+      {/*}
       <div className="mx-auto">
         <motion.div
           variants={containerVariants}
@@ -47,10 +48,9 @@ export default function MerchPage() {
             </motion.div>
           ))}
 
-          {/*<Merch index={1} title="Scouts Jacket" price="29.99" />
-          <Merch index={2} title="Scouts Shirt" price="24.99" />*/}
+          
         </motion.div>
-      </div>
+      </div>*/}
     </div>
   );
 }

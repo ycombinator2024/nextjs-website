@@ -11,7 +11,7 @@ export default function WebNav() {
 
   let isHome = false;
   let isCalendar = false;
-  let isPay = false;
+  let isCamp = false;
   let isPhotos = false;
   let isMerch = false;
   let isMaterials = false;
@@ -22,8 +22,8 @@ export default function WebNav() {
     isCalendar = true;
   }
 
-  if (router.pathname == "/pay") {
-    isPay = true;
+  if (router.pathname == "/camp") {
+    isCamp = true;
   }
   if (router.pathname == "/photos") {
     isPhotos = true;
@@ -56,15 +56,17 @@ export default function WebNav() {
           </Link>
         </li>
         <li>
-          <Link href="/materials" className={LinkStyles}>
-            <span className={`link  ${isMaterials ? "selected-link" : ""}`}>
-              Materials
+          <Link href="/camp" className={LinkStyles}>
+            <span className={`link  ${isCamp ? "selected-link" : ""}`}>
+              Camp
             </span>
           </Link>
         </li>
         <li>
-          <Link href="/pay" className={LinkStyles}>
-            <span className={`link  ${isPay ? "selected-link" : ""}`}>Pay</span>
+          <Link href="/materials" className={LinkStyles}>
+            <span className={`link  ${isMaterials ? "selected-link" : ""}`}>
+              Materials
+            </span>
           </Link>
         </li>
         <li>
@@ -74,15 +76,8 @@ export default function WebNav() {
             </span>
           </Link>
         </li>
-        <li>
-          <Link href="/merch" className={LinkStyles}>
-            <span className={`link  ${isMerch ? "selected-link" : ""}`}>
-              Merch
-            </span>
-          </Link>
-        </li>
 
-        {cartQuantity > 0 && (
+        {/*cartQuantity > 0 && (
           <button
             onClick={openCart}
             style={{ width: "3rem", height: "3rem", position: "relative" }}
@@ -103,9 +98,8 @@ export default function WebNav() {
               {cartQuantity}
             </div>
           </button>
-        )}
+            )*/}
       </ol>
-      
     </div>
   );
 }

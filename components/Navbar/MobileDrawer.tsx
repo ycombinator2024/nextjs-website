@@ -22,7 +22,7 @@ export default function MobileDrawer({
   const router = useRouter();
   let isHome = false;
   let isCalendar = false;
-  let isPay = false;
+  let isCamp = false;
   let isPhotos = false;
   let isMerch = false;
   let isMaterials = false;
@@ -33,8 +33,8 @@ export default function MobileDrawer({
     isCalendar = true;
   }
 
-  if (router.pathname == "/pay") {
-    isPay = true;
+  if (router.pathname == "/camp") {
+    isCamp = true;
   }
   if (router.pathname == "/photos") {
     isPhotos = true;
@@ -84,11 +84,11 @@ export default function MobileDrawer({
           </Link>
 
           <Link
-            href="/pay"
-            className={`  ${isPay ? "text-blue" : ""}`}
+            href="/camp"
+            className={`  ${isCamp ? "text-blue" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            Pay
+            Camp
           </Link>
 
           <Link

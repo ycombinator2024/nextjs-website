@@ -11,7 +11,7 @@ export default function MobileNav() {
     useShoppingCart();
   return (
     <div className="flex items-center ml:hidden">
-      {cartQuantity > 0 && (
+      {/*cartQuantity > 0 && (
         <button
           onClick={openCart}
           style={{ width: "3rem", height: "3rem", position: "relative" }}
@@ -33,7 +33,7 @@ export default function MobileNav() {
             {cartQuantity}
           </div>
         </button>
-      )}
+      )*/}
       <HamburgerMenu setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
       <MobileDrawer setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
     </div>

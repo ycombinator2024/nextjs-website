@@ -30,7 +30,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function Photos() {
-  const divArray = Array.from({ length: 7 }, (_, index) => index + 1);
+  const divArray = Array.from({ length: 33 }, (_, index) => index + 1);
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   return (
@@ -39,11 +39,11 @@ export default function Photos() {
         {divArray.map((index: number) => {
           return (
             <div
-              className="cursor-pointer transition-all duration-350 ease-in-out mb-5"
+              className="r transition-all duration-350 ease-in-out mb-5"
               key={index}
               onClick={() => {
-                setSlideNumber(index);
-                setOpenModal(true);
+                // setSlideNumber(index);
+                // setOpenModal(true);
               }}
             >
               <img
