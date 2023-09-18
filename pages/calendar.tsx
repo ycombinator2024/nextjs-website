@@ -13,13 +13,15 @@ export default function Calendar() {
   return (
     <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light flex flex-col items-center">
       {events && events.length > 0 && (
-        <div className="flex flex-col gap-5">
+        <div className="">
           {events.map((event: any, index: number) => {
             return (
-              <div key={index} className="flex items-center gap-5">
+              <div key={index} className="grid grid-cols-3 text-center my-5">
                 <div className="flex flex-col items-center ">
                   <span>{toMonth(event.date.split("/")[0])}</span>
-                  <span>{event.date.split("/")[1]}</span>
+                  <span className="text-xl font-semibold">
+                    {event.date.split("/")[1]}
+                  </span>
                 </div>
                 <div>
                   {event.from} - {event.to}

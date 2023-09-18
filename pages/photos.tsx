@@ -39,7 +39,7 @@ export default function Photos() {
         {divArray.map((index: number) => {
           return (
             <div
-              className="r transition-all duration-350 ease-in-out mb-5"
+              className=" transition-all duration-350 ease-in-out mb-5"
               key={index}
               onClick={() => {
                 // setSlideNumber(index);

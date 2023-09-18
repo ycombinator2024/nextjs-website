@@ -9,6 +9,13 @@ export default function Admin() {
   const [isCalendar, setIsCalendar] = useState(true);
 
   const [email, setEmail] = useState<string | null>(null);
+  const [eventName, setEventName] = useState("");
+  const [date, setDate] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+
+  const inputStyles = "text-xl outline-none border rounded-lg p-2";
+  const labelStyles = "text-lg";
 
   useEffect(() => {
     if (session && session.user && session.user.email) {
@@ -47,6 +54,26 @@ export default function Admin() {
     );
   }
 
+  async function createEvent(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const response = await fetch("/api/calendar/create-event", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        eventName: eventName,
+        date: date,
+        from: from,
+        to: to,
+      }),
+    });
+    const res = await response.json();
+    mutate();
+    return await res;
+  }
+
   if (status === "authenticated") {
     return (
       <div className="flex flex-col items-center my-16">
@@ -78,10 +105,12 @@ export default function Admin() {
           <div className="flex flex-col gap-5">
             {events.map((event: any, index: number) => {
               return (
-                <div key={index} className="flex items-center gap-5">
+                <div key={index} className="grid grid-cols-3 text-center my-5">
                   <div className="flex flex-col items-center ">
                     <span>{toMonth(event.date.split("/")[0])}</span>
-                    <span>{event.date.split("/")[1]}</span>
+                    <span className="text-xl font-semibold">
+                      {event.date.split("/")[1]}
+                    </span>
                   </div>
                   <div>
                     {event.from} - {event.to}
@@ -90,7 +119,52 @@ export default function Admin() {
                 </div>
               );
             })}
-            <div className="mt-16">Create an Event: </div>
+            <div className="mt-16">
+              Create an Event:
+              <form
+                className="border border-1 flex flex-col p-5 rounded-lg"
+                onSubmit={(e) => createEvent(e)}
+              >
+                <label className={labelStyles}>Event Name</label>
+                <input
+                  className={inputStyles}
+                  type="text"
+                  value={eventName}
+                  onChange={(e) => setEventName(e.target.value)}
+                  placeholder="Vistovka"
+                ></input>
+                <label className={labelStyles}>Date</label>
+                <input
+                  className={inputStyles}
+                  type="text"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  placeholder="10/11/2023"
+                ></input>
+                <label className={labelStyles}>From</label>
+                <input
+                  className={inputStyles}
+                  type="text"
+                  value={from}
+                  onChange={(e) => setFrom(e.target.value)}
+                  placeholder="10:00 am"
+                ></input>
+                <label className={labelStyles}>To</label>
+                <input
+                  className={inputStyles}
+                  type="text"
+                  value={to}
+                  onChange={(e) => setTo(e.target.value)}
+                  placeholder="4:00 pm"
+                ></input>
+                <button
+                  type="submit"
+                  className="mt-8 mx-auto bg-blue text-white rounded-full transition-colors duration-200 py-2 px-8 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-blueHover"
+                >
+                  Add Event
+                </button>
+              </form>
+            </div>
           </div>
         )}
       </div>
