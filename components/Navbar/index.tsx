@@ -25,7 +25,7 @@ export default function Navbar() {
     useShoppingCart();
 
   return (
-    <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-white ">
+    <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-[#230031] text-white">
       <div className="flex flex-col w-[95vw] footerXM:w-[90vw] footerSM:w-[85vw] sm:w-[80vw] xxl:w-[1280px] ">
         <nav className="flex text-lg justify-center items-center">
           <Link href="/" className="mr-auto ml-5 my-2">
@@ -41,7 +41,7 @@ export default function Navbar() {
         </nav>
       </div>
       <hr className="h-[1px] opacity-50 bg-[#C2C2C2] w-full border-0 rounded"></hr>
-      <Drawer isOpen={isOpen} onClose={closeCart} size="lg">
+      {/*<Drawer isOpen={isOpen} onClose={closeCart} size="lg">
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -89,7 +89,7 @@ export default function Navbar() {
             </button>
           </DrawerBody>
         </DrawerContent>
-      </Drawer>
+            </Drawer>*/}
     </div>
   );
 }

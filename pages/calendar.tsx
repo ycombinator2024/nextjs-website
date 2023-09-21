@@ -1,17 +1,27 @@
 import React from "react";
 import useSWR from "swr";
 import { toMonth } from "@/utils/mapping";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function Calendar() {
   let url = `/api/calendar/get-events`;
 
-  const { data: events, mutate } = useSWR(url, async () => {
+  const { data: eventsToJSON, isLoading } = useSWR(url, async () => {
     const res = await fetch(url);
     return res.json();
   });
 
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  let events = [];
+  if (eventsToJSON && eventsToJSON != "[object Object]") {
+    events = JSON.parse(eventsToJSON);
+  }
+
   return (
-    <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light flex flex-col items-center">
+    <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light flex flex-col items-center bg-gradient-to-tr from-black to-[#230031] text-white">
       {events && events.length > 0 && (
         <div className="">
           {events.map((event: any, index: number) => {

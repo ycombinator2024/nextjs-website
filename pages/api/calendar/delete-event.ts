@@ -2,30 +2,30 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { z, ZodError } from "zod";
 import prisma from "@/lib/client";
 
+const schema = z.object({
+  email: z.string().email(),
+  eventId: z.string(),
+});
+
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "GET") {
+  if (req.method !== "POST") {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
   try {
-    let unserializedEvents = await prisma.calendar.findMany({
-      select: {
-        id: true,
-        date: true,
-        event_name: true,
-        from: true,
-        to: true,
+    const event = schema.parse(req.body);
+    console.log(event.email);
+    console.log(event.eventId);
+    await prisma.calendar.delete({
+      where: {
+        id: parseInt(event.eventId.slice(0, -1)),
       },
     });
 
-    const events = JSON.stringify(unserializedEvents, (_, value) =>
-      typeof value === "bigint" ? value.toString() + "n" : value
-    );
-
-    res.status(200).json(events);
+    res.status(200).json({ message: "Event Created" });
   } catch (err) {
     console.log(err);
     if (err instanceof ZodError) {

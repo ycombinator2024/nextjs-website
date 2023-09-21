@@ -5,15 +5,27 @@ import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
 import { SessionProvider } from "next-auth/react";
+import theme from "../theme/styles";
+import { useRouter } from "next/router";
+import { use } from "react";
 
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps) {
+  const router = useRouter();
+  let showNavbar = true;
+  if (
+    router.pathname === "/membership/adult" ||
+    router.pathname === "//membership/child" ||
+    router.pathname === "//camp-package"
+  ) {
+    showNavbar = false;
+  }
   return (
     <SessionProvider session={session}>
       <ShoppingCartProvider>
-        <ChakraProvider>
+        <ChakraProvider theme={theme}>
           <Head>
             <meta charSet="UTF-8" />
             <title>St. George Pathfinders</title>
@@ -32,7 +44,7 @@ export default function App({
             <meta property="og:description" content="LA Lager" />
             <meta property="og:image" content="/landing_page.png" />
           </Head>
-          <Navbar />
+          {showNavbar && <Navbar />}
           <Component {...pageProps} />
         </ChakraProvider>
       </ShoppingCartProvider>

@@ -70,7 +70,7 @@ export default function Photos() {
             </div>
           </div>
         )}
-        {/*    <Box overflow="hidden" bg="purple.100" minH="100vh" py="6">
+        {/*    <Box overflow="hidden" bg="purple.100" minH="100svh" py="6">
         <Wrap px="1rem" spacing={4} justify="center">
           {divArray.map((index: number) => {
             return (

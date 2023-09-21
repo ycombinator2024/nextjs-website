@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import { NextApiRequest, NextApiResponse } from "next";
 import Auth0Provider from "next-auth/providers/auth0";
-// import { supabase } from "@/lib/client";
+import prisma from "@/lib/client";
 
 const {
   AUTH0_CLIENT_ID = "",
@@ -28,9 +28,24 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
           "nikita@malinovsky.net",
           "niki@malinovsky.net",
           "dr_drei@sbcglobal.net",
+          "Daspteam@gmail.com",
         ];
-        if (user && user.email && emailList.includes(user.email)) {
-          return true;
+        if (user && user.email) {
+          if (emailList.includes(user.email)) {
+            return true;
+          } else {
+            const isAllowedUser = await prisma.admin.findUnique({
+              where: {
+                email: user.email,
+              },
+              select: {
+                email: true,
+              },
+            });
+            if (isAllowedUser !== undefined) {
+              return true;
+            }
+          }
         }
         return false;
       },

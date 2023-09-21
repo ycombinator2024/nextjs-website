@@ -36,7 +36,7 @@ export default function WebNav() {
   }
 
   return (
-    <div className="hidden ml:flex items-center">
+    <div className="hidden ml:flex items-center ">
       <ol className="flex flex-nowrap items-center">
         <li>
           <Link

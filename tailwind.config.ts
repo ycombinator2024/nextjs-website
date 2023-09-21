@@ -7,10 +7,12 @@ module.exports = {
   ],
   theme: {
     colors: {
+      yellow: "#fbe710",
+      yellowHover: "#D4C304",
       blue: "#0076ff",
-      //blue: '#1fb6ff',
-      lightBlue: "#70A3FF",
       blueHover: "#3391FF",
+      lightBlue: "#70A3FF",
+
       green: "#13ce66",
       gray: "#8492a6",
       white: "#ffffff",
@@ -20,7 +22,6 @@ module.exports = {
       light: "#f9f9f9 ", //grey
       lightHover: "#E0E0E0",
       analogueBlue: "#0900FF",
-      yellow: "#FFCC70",
     },
     fontFamily: {
       sans: ["sans-serif", "sans-serif"],
@@ -38,6 +39,7 @@ module.exports = {
       xs: "480px",
       footerSM: "620px",
       sm: "640px",
+      sev: "700px",
       md: "768px",
       nav: "850px",
       ml: "896px",
