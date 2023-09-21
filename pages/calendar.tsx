@@ -21,7 +21,7 @@ export default function Calendar() {
   }
 
   return (
-    <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light flex flex-col items-center bg-gradient-to-tr from-black to-[#230031] text-white">
+    <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 flex flex-col items-center bg-gradient-to-t from-[#f9fde6] to-white text-black">
       {events && events.length > 0 && (
         <div className="">
           {events.map((event: any, index: number) => {

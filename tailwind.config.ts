@@ -12,14 +12,14 @@ module.exports = {
       blue: "#0076ff",
       blueHover: "#3391FF",
       lightBlue: "#70A3FF",
-
-      green: "#13ce66",
+      purple: "#230031",
+      green: "#336042",
+      light: "#f9fde6",
       gray: "#8492a6",
       white: "#ffffff",
       black: "#000000",
       red: "#E1341E",
       transparent: "transparent",
-      light: "#f9f9f9 ", //grey
       lightHover: "#E0E0E0",
       analogueBlue: "#0900FF",
     },

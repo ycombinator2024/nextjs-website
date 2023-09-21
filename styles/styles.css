@@ -41,14 +41,14 @@ html {
 .link {
   position: relative;
   text-decoration: none;
-  color: white;
+  color: #fbe710;
   display: inline-block;
   line-height: 1.25;
 }
 .link:not(.selected-link):after {
   content: "";
   display: block;
-  border-bottom: solid 2px #0076ff;
+  border-bottom: solid 2px #fbe710;
   transform: scaleX(0);
   transition: transform 200ms ease-in-out;
   transform-origin: 100% 50%;
@@ -59,7 +59,7 @@ html {
 }
 
 .selected-link {
-  border-bottom: solid 2px #0076ff;
+  border-bottom: solid 2px #fbe710;
 }
 
 .nav-icon4 {
@@ -82,7 +82,7 @@ html {
   position: absolute;
   height: 2px;
   width: 100%;
-  background: #0076ff;
+  background: #fbe710;
   border-radius: 2px;
   opacity: 1;
   left: 0;

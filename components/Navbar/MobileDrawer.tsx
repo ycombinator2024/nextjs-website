@@ -52,59 +52,51 @@ export default function MobileDrawer({
       size="full"
       onClose={() => setIsNavOpen(!isNavOpen)}
     >
-      <DrawerContent mt="85px" className="text-2xl">
+      <DrawerContent mt="85px" className="text-2xl" bg="#f9fde6">
         <DrawerBody
           p={0}
-          className="flex flex-col items-center text-3xl gap-10 mt-10"
+          className="flex flex-col items-center text-3xl gap-16 mt-16"
         >
           <Link
             href="/"
             className={`  whitespace-nowrap text-center outline-none ${
-              isHome ? "text-blue" : ""
+              isHome ? "text-green" : ""
             }`}
             onClick={() => setIsNavOpen(false)}
           >
-            Home
+            HOME
           </Link>
 
           <Link
             href="/calendar"
-            className={`  ${isCalendar ? "text-blue" : ""}`}
+            className={`  ${isCalendar ? "text-green" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            Calendar
+            CALENDAR
           </Link>
 
           <Link
             href="/materials"
-            className={`  ${isMaterials ? "text-blue" : ""}`}
+            className={`  ${isMaterials ? "text-green" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            Materials
+            MATERIALS
           </Link>
 
           <Link
             href="/camp"
-            className={`  ${isCamp ? "text-blue" : ""}`}
+            className={`  ${isCamp ? "text-green" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            Camp
+            CAMP
           </Link>
 
           <Link
             href="/photos"
-            className={`  ${isPhotos ? "text-blue" : ""}`}
+            className={`  ${isPhotos ? "text-green" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
-            Photos
-          </Link>
-
-          <Link
-            href="/merch"
-            className={`  ${isMerch ? "text-blue" : ""}`}
-            onClick={() => setIsNavOpen(false)}
-          >
-            Merch
+            PHOTOS
           </Link>
         </DrawerBody>
       </DrawerContent>

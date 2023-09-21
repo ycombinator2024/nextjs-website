@@ -39,13 +39,10 @@ export default function WebNav() {
     <div className="hidden ml:flex items-center ">
       <ol className="flex flex-nowrap items-center">
         <li>
-          <Link
-            href="/"
-            className={`mr-8 link whitespace-nowrap ${
-              isHome ? "selected-link" : ""
-            }`}
-          >
-            Home
+          <Link href="/" className={LinkStyles}>
+            <span className={`link ${isHome ? "selected-link" : ""}`}>
+              Home
+            </span>
           </Link>
         </li>
         <li>

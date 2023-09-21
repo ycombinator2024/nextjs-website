@@ -25,7 +25,7 @@ export default function Navbar() {
     useShoppingCart();
 
   return (
-    <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-[#230031] text-white">
+    <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-green text-white">
       <div className="flex flex-col w-[95vw] footerXM:w-[90vw] footerSM:w-[85vw] sm:w-[80vw] xxl:w-[1280px] ">
         <nav className="flex text-lg justify-center items-center">
           <Link href="/" className="mr-auto ml-5 my-2">

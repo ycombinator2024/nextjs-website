@@ -11,8 +11,8 @@ function HomePage() {
       <div className="flex flex-col items-center justify-center bg-black pt-16">
         <Image src="/favicon_adj.png" width={304} height={398} alt="LA Lager" />
         <span className="mt-5">LOS ANGELES, CA</span>
-        <span className="text-8xl mt-10">ST. GEORGE</span>{" "}
-        <span className="text-8xl mt-5">PATHFINDERS</span>
+        <span className="text-5xl sev:text-8xl mt-10">ST. GEORGE</span>{" "}
+        <span className="text-5xl sev:text-8xl mt-5">PATHFINDERS</span>
         <div className="flex items-center justify-center mt-20 gap-10 text-xl">
           <motion.button
             whileHover={{
@@ -42,10 +42,12 @@ function HomePage() {
           </motion.button>
         </div>
       </div>
-      <div className="bg-gradient-to-b from-black to-[#230031] p-24"></div>
+      <div className="bg-gradient-to-b from-black to-purple p-24"></div>
       <div className="bg-white py-24">
-        <div className="bg-[#230031] w-[400px] mx-auto p-5 rounded-lg">
-          <span className="text-4xl mx-auto">Ages 8 to 98 Волчата</span>
+        <div className="bg-light text-black w-[400px] mx-auto p-5 rounded-lg">
+          <span className="text-3xl sev:text-4xl mx-auto">
+            Ages 8 to 98 Волчата
+          </span>
           <div className="flex flex-col mt-10 gap-5 text-xl">
             <span>- Волчата и Белочки 8-11</span>
             <span>- Разведчики и Разведчици 12-17</span>
@@ -67,7 +69,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="bg-[#f4f2ef] py-24">
+      <div className="bg-light py-24">
         <div className="w-[400px] text-3xl bg-black mx-auto p-5 rounded-lg">
           <span>Events</span>
         </div>
