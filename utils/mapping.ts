@@ -1,4 +1,5 @@
 function convertMonth(month: string) {
+  console.log("CONVER: ", parseInt(month));
   switch (parseInt(month)) {
     case 1:
       return "January";
@@ -53,13 +54,35 @@ function addDateSuffix(day: number) {
   }
 }
 
+function convertDayOfWeek(day: number) {
+  switch (day) {
+    case 0:
+      return "Sunday";
+    case 1:
+      return "Monday";
+    case 2:
+      return "Tuseday";
+    case 3:
+      return "Wednesday";
+    case 4:
+      return "Thursday";
+    case 5:
+      return "Friday";
+    default:
+      return "Saturday";
+  }
+}
+
 function convertYearMonthDay(date: string) {
   date = date.split("T")[0];
   let year = date.split("-")[0];
   let month = date.split("-")[1];
   let day = addDateSuffix(parseInt(date.split("-")[2]));
+  console.log("MON: ", month);
   const dateObject = new Date(parseInt(year), parseInt(month), parseInt(day));
-  const dayOfWeek = dateObject.getDay();
+  const dayOfWeekInt = dateObject.getDay();
+  console.log(dateObject);
+  const dayOfWeek = convertDayOfWeek(dayOfWeekInt);
   month = convertMonth(month);
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 }
