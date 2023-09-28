@@ -14,8 +14,8 @@ export default async function handler(
     let unserializedEvents = await prisma.calendar.findMany({
       select: {
         id: true,
-        date: true,
         event_name: true,
+        location: true,
         from: true,
         to: true,
       },

@@ -11,6 +11,8 @@ module.exports = {
       yellowHover: "#D4C304",
       blue: "#0076ff",
       blueHover: "#3391FF",
+      orange: "#E84A37",
+      orangeHover: "#D42C18",
       lightBlue: "#70A3FF",
       purple: "#230031",
       green: "#336042",

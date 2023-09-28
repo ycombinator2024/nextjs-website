@@ -1,11 +1,13 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
 import React from "react";
 import Link from "next/link";
-
 import { motion } from "framer-motion";
+import { useCalendarContext } from "@/context/CalendarContext";
+
+import { convertDate } from "@/utils/mapping";
 
 function HomePage() {
+  const { events, isLoading } = useCalendarContext();
   return (
     <div className="flex flex-col w-[100vw] text-white">
       <div className="flex flex-col items-center justify-center bg-black pt-16">
@@ -43,8 +45,9 @@ function HomePage() {
         </div>
       </div>
       <div className="bg-gradient-to-b from-black to-purple p-24"></div>
-      <div className="bg-white py-24">
-        <div className="bg-light text-black w-[400px] mx-auto p-5 rounded-lg">
+      <div className="flex bg-white py-24">
+        <div className="w-[500px]"></div>
+        <div className="bg-light text-black w-[500px] mx-auto p-8 rounded-lg">
           <span className="text-3xl sev:text-4xl mx-auto">
             Ages 8 to 98 Волчата
           </span>
@@ -69,10 +72,30 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="bg-light py-24">
-        <div className="w-[400px] text-3xl bg-black mx-auto p-5 rounded-lg">
-          <span>Events</span>
+      <div className="flex justify-center bg-light text-black py-24">
+        <div className="">
+          <span className="text-4xl">Events</span>
+          <div className="bg-orange rounded-lg p-5 mt-5">
+            {events && events.length > 0 && (
+              <div className="">
+                {events.map((event: any, index: number) => {
+                  return (
+                    <div key={index}>
+                      <div className="flex flex-col ">
+                        <span className="text-2xl">{event.event_name}</span>
+                        <span className="text-lg mt-2">
+                          {convertDate(event.from, event.to)}
+                        </span>
+                        <span className="text-lg">{event.location}</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         </div>
+        <div className="w-[500px]"></div>
       </div>
       <div className="bg-black py-24">
         <div className="w-[400px] text-3xl bg-black mx-auto p-5 rounded-lg flex gap-5">

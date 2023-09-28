@@ -3,7 +3,8 @@ import type { AppProps } from "next/app";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
-import { ShoppingCartProvider } from "@/context/ShoppingCartContext";
+
+import { CalendarContextWrapper } from "@/context/CalendarContext";
 import { SessionProvider } from "next-auth/react";
 import theme from "../theme/styles";
 import { useRouter } from "next/router";
@@ -24,7 +25,7 @@ export default function App({
   }
   return (
     <SessionProvider session={session}>
-      <ShoppingCartProvider>
+      <CalendarContextWrapper>
         <ChakraProvider theme={theme}>
           <Head>
             <meta charSet="UTF-8" />
@@ -47,7 +48,7 @@ export default function App({
           {showNavbar && <Navbar />}
           <Component {...pageProps} />
         </ChakraProvider>
-      </ShoppingCartProvider>
+      </CalendarContextWrapper>
     </SessionProvider>
   );
 }

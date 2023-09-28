@@ -17,8 +17,7 @@ export default async function handler(
 
   try {
     const event = schema.parse(req.body);
-    console.log(event.email);
-    console.log(event.eventId);
+
     await prisma.calendar.delete({
       where: {
         id: parseInt(event.eventId.slice(0, -1)),

@@ -1,23 +1,13 @@
 import React from "react";
 import useSWR from "swr";
-import { toMonth } from "@/utils/mapping";
+import { convertDate } from "@/utils/mapping";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import { useCalendarContext } from "@/context/CalendarContext";
 
 export default function Calendar() {
-  let url = `/api/calendar/get-events`;
-
-  const { data: eventsToJSON, isLoading } = useSWR(url, async () => {
-    const res = await fetch(url);
-    return res.json();
-  });
-
+  const { events, isLoading } = useCalendarContext();
   if (isLoading) {
     return <LoadingSpinner />;
-  }
-
-  let events = [];
-  if (eventsToJSON && eventsToJSON != "[object Object]") {
-    events = JSON.parse(eventsToJSON);
   }
 
   return (
@@ -26,17 +16,14 @@ export default function Calendar() {
         <div className="">
           {events.map((event: any, index: number) => {
             return (
-              <div key={index} className="grid grid-cols-3 text-center my-5">
-                <div className="flex flex-col items-center ">
-                  <span>{toMonth(event.date.split("/")[0])}</span>
-                  <span className="text-xl font-semibold">
-                    {event.date.split("/")[1]}
+              <div key={index}>
+                <div className="flex flex-col ">
+                  <span className="text-2xl">{event.event_name}</span>
+                  <span className="text-lg mt-2">
+                    {convertDate(event.from, event.to)}
                   </span>
+                  <span className="text-lg">{event.location}</span>
                 </div>
-                <div>
-                  {event.from} - {event.to}
-                </div>
-                <div>{event.event_name}</div>
               </div>
             );
           })}

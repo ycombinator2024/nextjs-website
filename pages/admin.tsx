@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
-import { toMonth } from "@/utils/mapping";
+import { convertDate } from "@/utils/mapping";
 
 import { motion } from "framer-motion";
 import { Spinner } from "@chakra-ui/react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { BsTrash3 } from "react-icons/bs";
+
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Admin() {
   const { data: session, status } = useSession();
@@ -15,9 +19,10 @@ export default function Admin() {
 
   const [email, setEmail] = useState<string | null>(null);
   const [eventName, setEventName] = useState("");
-  const [date, setDate] = useState("");
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
+  const [location, setLocation] = useState("");
+  const [from, setFrom] = useState(new Date());
+  const [to, setTo] = useState(new Date());
+
   const [isSignInLoading, setIsSignInLoading] = useState(false);
   const [isEventLoading, setIsEventLoading] = useState(false);
   const [eventDeleteId, setEventDeleteId] = useState("");
@@ -110,7 +115,7 @@ export default function Admin() {
       },
       body: JSON.stringify({
         eventName: eventName,
-        date: date,
+        location: location,
         from: from,
         to: to,
       }),
@@ -147,7 +152,7 @@ export default function Admin() {
 
   if (status === "authenticated") {
     return (
-      <div className="flex flex-col items-center my-16">
+      <div className="flex flex-col items-center py-16 min-h-[calc(100svh-85px)]">
         <div className="flex flex-col w-[300px] mx-auto mb-3 ">
           <div className="flex items-center justify-center mb-3">
             <button
@@ -172,50 +177,50 @@ export default function Admin() {
             </button>
           </div>
         </div>
-        {isCalendar && events && events.length > 0 && (
+
+        {isCalendar && (
           <div className="flex flex-col gap-5">
-            {events.map((event: any, index: number) => {
-              return (
-                <div key={index}>
-                  <div className="grid grid-cols-3 text-center my-5">
-                    <div className="flex flex-col items-center ">
-                      <span>{toMonth(event.date.split("/")[0])}</span>
-                      <span className="text-xl font-semibold">
-                        {event.date.split("/")[1]}
+            {events &&
+              events.length > 0 &&
+              events.map((event: any, index: number) => {
+                return (
+                  <div key={index}>
+                    <div className="flex flex-col ">
+                      <span className="text-2xl">{event.event_name}</span>
+                      <span className="text-lg mt-2">
+                        {convertDate(event.from, event.to)}
                       </span>
+                      <span className="text-lg">{event.location}</span>
                     </div>
-                    <div>
-                      {event.from} - {event.to}
-                    </div>
-                    <div>{event.event_name}</div>
-                  </div>
-                  <div className="relative items-center ml-auto">
-                    <BsTrash3
-                      className={`text-red ml-auto cursor-pointer   ${
-                        isDeleteLoading && event.id === eventDeleteId
-                          ? "opacity-0 pointer-events-none"
-                          : ""
-                      }`}
-                      onClick={(e: any) => {
-                        setEventDeleteId(event.id);
-                        deleteEvent(e, event.id);
-                      }}
-                      size="22"
-                    />
-                    {isDeleteLoading && event.id === eventDeleteId && (
-                      <div
-                        className="absolute right-0 top-0 flex items-center justify-center bg-red opacity-50 rounded-lg shadow-md ml-auto px-2 py-1
+                    <div className="relative items-center ml-auto">
+                      <BsTrash3
+                        className={`text-red ml-auto cursor-pointer   ${
+                          isDeleteLoading && event.id === eventDeleteId
+                            ? "opacity-0 pointer-events-none"
+                            : ""
+                        }`}
+                        onClick={(e: any) => {
+                          setEventDeleteId(event.id);
+                          deleteEvent(e, event.id);
+                        }}
+                        size="22"
+                      />
+                      {isDeleteLoading && event.id === eventDeleteId && (
+                        <div
+                          className="absolute right-0 top-0 flex items-center justify-center bg-red opacity-50 rounded-lg shadow-md ml-auto px-2 py-1
            cursor-not-allowed "
-                      >
-                        <Spinner size="sm" color="white" />
-                      </div>
-                    )}
+                        >
+                          <Spinner size="sm" color="white" />
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
             <div className="mt-16 flex flex-col">
-              <span className="mx-auto text-xl mb-5">Create an Event</span>
+              <span className="mx-auto text-xl mb-5 text-black">
+                Create an Event
+              </span>
               <form
                 className="border border-1 flex flex-col p-5 rounded-lg"
                 onSubmit={(e) => createEvent(e)}
@@ -231,39 +236,47 @@ export default function Admin() {
                   placeholder="Vistovka"
                   required
                 ></input>
-                <label className={labelStyles}>
-                  Date <span className="text-[#E53B17] ml-[2px]">*</span>
+                <label className={`${labelStyles} mt-2`}>
+                  Event Location{" "}
+                  <span className="text-[#E53B17] ml-[2px]">*</span>
                 </label>
                 <input
                   className={inputStyles}
                   type="text"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  placeholder="10/11/2023"
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
+                  placeholder="Scouts House"
                   required
                 ></input>
-                <label className={labelStyles}>
+                <label className={`${labelStyles} mt-2`}>
                   From <span className="text-[#E53B17] ml-[2px]">*</span>
                 </label>
-                <input
-                  className={inputStyles}
-                  type="text"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  placeholder="10:00 am"
-                  required
-                ></input>
-                <label className={labelStyles}>
+                <DatePicker
+                  selected={from}
+                  onChange={(date: Date) => setFrom(date)}
+                  showTimeSelect
+                  timeFormat="h:mm aa"
+                  timeIntervals={30}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  timeCaption="Time"
+                  className="w-[300px] text-black"
+                  isClearable
+                />
+                <label className={`${labelStyles} mt-2`}>
                   To <span className="text-[#E53B17] ml-[2px]">*</span>
                 </label>
-                <input
-                  className={inputStyles}
-                  type="text"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  placeholder="4:00 pm"
-                  required
-                ></input>
+                <DatePicker
+                  selected={to}
+                  onChange={(date: Date) => setTo(date)}
+                  showTimeSelect
+                  timeFormat="h:mm aa"
+                  timeIntervals={30}
+                  dateFormat="MMMM d, yyyy h:mm aa"
+                  timeCaption="Time"
+                  isClearable
+                  className="w-[300px] text-black"
+                />
+
                 <div className="mt-8 relative items-center mx-auto">
                   <button
                     type="submit"

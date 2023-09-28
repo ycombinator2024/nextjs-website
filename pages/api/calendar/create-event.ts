@@ -4,7 +4,7 @@ import prisma from "@/lib/client";
 
 const schema = z.object({
   eventName: z.string().min(1).max(255),
-  date: z.string().min(1).max(255),
+  location: z.string().min(1).max(255),
   from: z.string().min(1).max(255),
   to: z.string().min(1).max(255),
 });
@@ -23,7 +23,7 @@ export default async function handler(
     await prisma.calendar.create({
       data: {
         event_name: event.eventName,
-        date: event.date,
+        location: event.location,
         from: event.from,
         to: event.to,
       },
