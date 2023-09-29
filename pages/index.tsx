@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { useCalendarContext } from "@/context/CalendarContext";
 import { Spinner } from "@chakra-ui/react";
 import { convertDate } from "@/utils/mapping";
+import { BsFacebook, BsInstagram } from "react-icons/bs";
 
 function HomePage() {
   const { events, isLoading } = useCalendarContext();
@@ -121,17 +122,27 @@ function HomePage() {
       </div>
       <div className="bg-black py-24 flex ">
         <div className="flex flex-col footerSM:flex-row text-xl mx-auto border border-white border-1 ">
-          <div className="flex flex-col items-center footerSM:border-r p-5">
+          <div className="flex flex-col items-center footerSM:border-r p-5 gap-2">
             <span>Email</span>
             <span>info@razvedchik.org </span>
           </div>
-          <div className="flex flex-col items-center footerSM:border-r p-5">
+          <div className="flex flex-col items-center footerSM:border-r p-5 gap-2">
             <span>Call</span>
             <span>255 352-6258</span>
           </div>
-          <div className="flex flex-col items-center p-5">
+          <div className="flex flex-col items-center p-5 gap-2">
             <span>Follow Us</span>
-            <span>Facebook</span>
+            <div className="flex gap-4">
+              <a href="https://www.facebook.com/sgpathfinders/" target="_blank">
+                <BsFacebook className="text-3xl" />
+              </a>
+              <a
+                href="https://www.instagram.com/razvedchik.dnn"
+                target="_blank"
+              >
+                <BsInstagram className="text-3xl" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
