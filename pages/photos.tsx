@@ -19,7 +19,7 @@ export default function Photos({ divArray }: { divArray: number[] }) {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light">
-      <div className="columns-3">
+      <div className="columns-1 xs:columns-2 lg:columns-3">
         {divArray.map((index: number) => {
           return (
             <div
