@@ -180,48 +180,50 @@ export default function Admin() {
         </div>
 
         {isCalendar && (
-          <div className="flex flex-col gap-5 mx-5">
-            {events &&
-              events.length > 0 &&
-              events.map((event: any, index: number) => {
-                return (
-                  <div key={index}>
-                    <div className="flex flex-col">
-                      <span className="text-xl xs:text-2xl">
-                        {event.event_name}
-                      </span>
-                      <span className="text-md xs:text-lg mt-2">
-                        {convertDate(event.from, event.to)}
-                      </span>
-                      <span className="text-md xs:text-lg">
-                        {event.location}
-                      </span>
+          <div className="flex flex-col ">
+            <div className="flex flex-col mx-5">
+              {events &&
+                events.length > 0 &&
+                events.map((event: any, index: number) => {
+                  return (
+                    <div key={index}>
+                      <div className="flex flex-col">
+                        <span className="text-xl xs:text-2xl">
+                          {event.event_name}
+                        </span>
+                        <span className="text-md xs:text-lg mt-2 ">
+                          {convertDate(event.from, event.to)}
+                        </span>
+                        <span className="text-md xs:text-lg">
+                          {event.location}
+                        </span>
+                      </div>
+                      <div className="relative items-center ml-auto">
+                        <BsTrash3
+                          className={`text-red ml-auto cursor-pointer   ${
+                            isDeleteLoading && event.id === eventDeleteId
+                              ? "opacity-0 pointer-events-none"
+                              : ""
+                          }`}
+                          onClick={(e: any) => {
+                            setEventDeleteId(event.id);
+                            deleteEvent(e, event.id);
+                          }}
+                          size="22"
+                        />
+                        {isDeleteLoading && event.id === eventDeleteId && (
+                          <div
+                            className="absolute right-0 top-0 flex items-center justify-center bg-red opacity-50 rounded-lg shadow-md ml-auto px-2 py-1
+                              cursor-not-allowed "
+                          >
+                            <Spinner size="sm" color="white" />
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <div className="relative items-center ml-auto">
-                      <BsTrash3
-                        className={`text-red ml-auto cursor-pointer   ${
-                          isDeleteLoading && event.id === eventDeleteId
-                            ? "opacity-0 pointer-events-none"
-                            : ""
-                        }`}
-                        onClick={(e: any) => {
-                          setEventDeleteId(event.id);
-                          deleteEvent(e, event.id);
-                        }}
-                        size="22"
-                      />
-                      {isDeleteLoading && event.id === eventDeleteId && (
-                        <div
-                          className="absolute right-0 top-0 flex items-center justify-center bg-red opacity-50 rounded-lg shadow-md ml-auto px-2 py-1
-           cursor-not-allowed "
-                        >
-                          <Spinner size="sm" color="white" />
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+            </div>
             <div className="mt-16 flex flex-col mx-5">
               <span className="mx-auto text-xl mb-5 text-black">
                 Create an Event
