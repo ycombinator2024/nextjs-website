@@ -1,31 +1,6 @@
 import React from "react";
 import Image from "next/image";
 
-import {
-  Box,
-  Container,
-  Text,
-  Wrap,
-  WrapItem,
-  Input,
-  IconButton,
-  InputRightElement,
-  InputGroup,
-  useToast,
-  Flex,
-} from "@chakra-ui/react";
-import {
-  Avatar,
-  useDisclosure,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-} from "@chakra-ui/react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -35,11 +10,11 @@ export default function Photos() {
   const [openModal, setOpenModal] = useState(false);
   return (
     <div className="min-h-[calc(100svh-85px)] py-8 px-4 ml:pr-8 bg-light">
-      <div className="columns-3 ">
+      <div className="columns-3">
         {divArray.map((index: number) => {
           return (
             <div
-              className=" transition-all duration-350 ease-in-out mb-5"
+              className="transition-all duration-350 ease-in-out mb-5"
               key={index}
               onClick={() => {
                 // setSlideNumber(index);
@@ -50,11 +25,12 @@ export default function Photos() {
                 src={`/photos/${index}.jpg`}
                 alt={`LA Lager ${index}`}
                 style={{ width: "100%" }}
+                loading="lazy"
               />
             </div>
           );
         })}
-        {openModal && (
+        {/*openModal && (
           <div className="fixed top-0 right-0 left-0 bottom-0 z-[1000] bg-transparent flex flex-col items-center justify-center w-[100vw] h-[100svh]">
             <div>Exit</div>
             <div className="flex items-center justify-center w-[100vw]">
@@ -69,7 +45,7 @@ export default function Photos() {
               </span>
             </div>
           </div>
-        )}
+        )*/}
         {/*    <Box overflow="hidden" bg="purple.100" minH="100svh" py="6">
         <Wrap px="1rem" spacing={4} justify="center">
           {divArray.map((index: number) => {
