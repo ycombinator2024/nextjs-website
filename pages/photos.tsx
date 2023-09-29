@@ -4,8 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-export default function Photos() {
+export const getStaticProps = async () => {
   const divArray = Array.from({ length: 33 }, (_, index) => index + 1);
+
+  return {
+    props: {
+      divArray,
+    },
+  };
+};
+
+export default function Photos({ divArray }: { divArray: number[] }) {
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
   return (
