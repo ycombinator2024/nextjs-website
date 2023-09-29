@@ -12,6 +12,9 @@ export default async function handler(
 
   try {
     let unserializedEvents = await prisma.calendar.findMany({
+      orderBy: {
+        from: "asc",
+      },
       select: {
         id: true,
         event_name: true,

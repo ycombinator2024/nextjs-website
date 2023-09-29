@@ -7,6 +7,7 @@ const schema = z.object({
   location: z.string().min(1).max(255),
   from: z.string().min(1).max(255),
   to: z.string().min(1).max(255),
+  email: z.string().min(1).max(255),
 });
 
 export default async function handler(
@@ -26,6 +27,7 @@ export default async function handler(
         location: event.location,
         from: event.from,
         to: event.to,
+        email: event.email,
       },
     });
 

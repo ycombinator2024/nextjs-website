@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCalendarContext } from "@/context/CalendarContext";
-
+import { Spinner } from "@chakra-ui/react";
 import { convertDate } from "@/utils/mapping";
 
 function HomePage() {
@@ -45,13 +45,13 @@ function HomePage() {
         </div>
       </div>
       <div className="bg-gradient-to-b from-black to-purple p-24"></div>
-      <div className="flex bg-white py-24">
-        <div className="w-[500px]"></div>
-        <div className="bg-light text-black w-[500px] mx-auto p-8 rounded-lg">
+      <div className="flex bg-white py-24 mx-4 eight:mx-0">
+        <div className="w-[0px] eight:w-[50%] tw:w-[500px]"></div>
+        <div className="bg-light text-black w-[500px] mx-auto eight:mr-10 tw:mx-auto p-8 rounded-lg">
           <span className="text-3xl sev:text-4xl mx-auto">
             Ages 8 to 98 Волчата
           </span>
-          <div className="flex flex-col mt-10 gap-5 text-xl">
+          <div className="flex flex-col mt-10 gap-5 text-xl ">
             <span>- Волчата и Белочки 8-11</span>
             <span>- Разведчики и Разведчици 12-17</span>
             <span>- Витязи и Дружчинницы 18 - 98</span>
@@ -73,35 +73,66 @@ function HomePage() {
       </div>
 
       <div className="flex justify-center bg-light text-black py-24">
-        <div className="">
-          <span className="text-4xl">Events</span>
-          <div className="bg-orange rounded-lg p-5 mt-5">
-            {events && events.length > 0 && (
-              <div className="">
+        <div className="mx-auto ">
+          <span className="text-4xl mx-10">Events</span>
+          <div className="bg-orange rounded-lg p-5 mt-5 flex flex-col gap-5 mx-10">
+            {events && events.length > 0 ? (
+              <>
                 {events.map((event: any, index: number) => {
                   return (
                     <div key={index}>
-                      <div className="flex flex-col ">
-                        <span className="text-2xl">{event.event_name}</span>
-                        <span className="text-lg mt-2">
+                      <div className="flex flex-col">
+                        <span className="text-xl xs:text-2xl">
+                          {event.event_name}
+                        </span>
+                        <span className="text-md xs:text-lg mt-2">
                           {convertDate(event.from, event.to)}
                         </span>
-                        <span className="text-lg">{event.location}</span>
+                        <span className="text-md xs:text-lg">
+                          {event.location}
+                        </span>
                       </div>
                     </div>
                   );
                 })}
+              </>
+            ) : (
+              <div className="relative flex items-center">
+                <Spinner
+                  thickness="4px"
+                  speed=".8s"
+                  emptyColor="gray.200"
+                  color="#336042"
+                  width={{ base: "250px", xs: "300px" }}
+                  height={{ base: "250px", xs: "300px" }}
+                />
+                <div
+                  className="absolute
+                    w-[125px] h-[165px] ml-[63px]
+                    xs:w-[149px] xs:h-[198px] xs:ml-[76px]"
+                >
+                  <Image src="/favicon_adj.png" alt="Logo" fill />
+                </div>
               </div>
             )}
           </div>
         </div>
-        <div className="w-[500px]"></div>
+        <div className="w-[0px] eight:w-[40%] tw:w-[500px]"></div>
       </div>
-      <div className="bg-black py-24">
-        <div className="w-[400px] text-3xl bg-black mx-auto p-5 rounded-lg flex gap-5">
-          <span>Email</span>
-          <span>Call</span>
-          <span>Follow Us</span>
+      <div className="bg-black py-24 flex ">
+        <div className="flex flex-col footerSM:flex-row text-xl mx-auto border border-white border-1 ">
+          <div className="flex flex-col items-center footerSM:border-r p-5">
+            <span>Email</span>
+            <span>info@razvedchik.org </span>
+          </div>
+          <div className="flex flex-col items-center footerSM:border-r p-5">
+            <span>Call</span>
+            <span>255 352-6258</span>
+          </div>
+          <div className="flex flex-col items-center p-5">
+            <span>Follow Us</span>
+            <span>Facebook</span>
+          </div>
         </div>
       </div>
     </div>

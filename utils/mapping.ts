@@ -1,5 +1,6 @@
+import moment from "moment-timezone";
+
 function convertMonth(month: string) {
-  console.log("CONVER: ", parseInt(month));
   switch (parseInt(month)) {
     case 1:
       return "January";
@@ -30,7 +31,6 @@ function convertMonth(month: string) {
 
 function convertHoursMinutes(time: string) {
   time = time.split("T")[1];
-  console.log(time);
   let hours = parseInt(time.split(":")[0]);
   let minutes = time.split(":")[1];
 
@@ -77,23 +77,45 @@ function convertYearMonthDay(date: string) {
   date = date.split("T")[0];
   let year = date.split("-")[0];
   let month = date.split("-")[1];
-  let day = addDateSuffix(parseInt(date.split("-")[2]));
-  console.log("MON: ", month);
-  const dateObject = new Date(parseInt(year), parseInt(month), parseInt(day));
+  let day = date.split("-")[2];
+  const dateObject = new Date(
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day)
+  );
   const dayOfWeekInt = dateObject.getDay();
-  console.log(dateObject);
   const dayOfWeek = convertDayOfWeek(dayOfWeekInt);
   month = convertMonth(month);
+  day = addDateSuffix(parseInt(day));
   return `${dayOfWeek}, ${month} ${day}, ${year}`;
 }
 
-function convertToLATime(date: string) {
-  return date.toLocaleString();
+function convertMonthDay(date: string) {
+  date = date.split("T")[0];
+  let year = date.split("-")[0];
+  let month = date.split("-")[1];
+  let day = date.split("-")[2];
+  const dateObject = new Date(
+    parseInt(year),
+    parseInt(month) - 1,
+    parseInt(day)
+  );
+  const dayOfWeekInt = dateObject.getDay();
+  const dayOfWeek = convertDayOfWeek(dayOfWeekInt);
+  month = convertMonth(month);
+  day = addDateSuffix(parseInt(day));
+  return `${dayOfWeek}, ${month} ${day}`;
+}
+
+function convertYear(date: string) {
+  let year = date.split("-")[0];
+  return year;
 }
 
 export function convertDate(from: string, to: string) {
-  from = convertToLATime(from);
-  to = convertToLATime(to);
+  from = moment(from).tz("America/Los_Angeles").format("YYYY-MM-DDTHH:mm");
+  to = moment(to).tz("America/Los_Angeles").format("YYYY-MM-DDTHH:mm");
+
   let isSameDate = from.split("T")[0] === to.split("T")[0];
   if (isSameDate) {
     return (
@@ -104,32 +126,16 @@ export function convertDate(from: string, to: string) {
       convertHoursMinutes(to)
     );
   }
-  return "other";
-  let num = parseInt(from);
-  switch (num) {
-    case 1:
-      return "January";
-    case 2:
-      return "Febuary";
-    case 3:
-      return "March";
-    case 4:
-      return "April";
-    case 5:
-      return "May";
-    case 6:
-      return "June";
-    case 7:
-      return "July";
-    case 8:
-      return "Augest";
-    case 9:
-      return "September";
-    case 10:
-      return "October";
-    case 11:
-      return "November";
-    default:
-      return "December";
-  }
+
+  return (
+    convertMonthDay(from) +
+    " " +
+    convertHoursMinutes(from) +
+    " - " +
+    convertMonthDay(to) +
+    " " +
+    convertHoursMinutes(to) +
+    " " +
+    convertYear(to)
+  );
 }

@@ -118,6 +118,7 @@ export default function Admin() {
         location: location,
         from: from,
         to: to,
+        email: email,
       }),
     });
     const res = await response.json();
@@ -179,18 +180,22 @@ export default function Admin() {
         </div>
 
         {isCalendar && (
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 mx-5">
             {events &&
               events.length > 0 &&
               events.map((event: any, index: number) => {
                 return (
                   <div key={index}>
-                    <div className="flex flex-col ">
-                      <span className="text-2xl">{event.event_name}</span>
-                      <span className="text-lg mt-2">
+                    <div className="flex flex-col">
+                      <span className="text-xl xs:text-2xl">
+                        {event.event_name}
+                      </span>
+                      <span className="text-md xs:text-lg mt-2">
                         {convertDate(event.from, event.to)}
                       </span>
-                      <span className="text-lg">{event.location}</span>
+                      <span className="text-md xs:text-lg">
+                        {event.location}
+                      </span>
                     </div>
                     <div className="relative items-center ml-auto">
                       <BsTrash3
@@ -217,7 +222,7 @@ export default function Admin() {
                   </div>
                 );
               })}
-            <div className="mt-16 flex flex-col">
+            <div className="mt-16 flex flex-col mx-5">
               <span className="mx-auto text-xl mb-5 text-black">
                 Create an Event
               </span>
@@ -259,7 +264,7 @@ export default function Admin() {
                   timeIntervals={30}
                   dateFormat="MMMM d, yyyy h:mm aa"
                   timeCaption="Time"
-                  className="w-[300px] text-black"
+                  className="w-[225px] footerXM:w-[300px] text-black"
                   isClearable
                 />
                 <label className={`${labelStyles} mt-2`}>
@@ -274,7 +279,7 @@ export default function Admin() {
                   dateFormat="MMMM d, yyyy h:mm aa"
                   timeCaption="Time"
                   isClearable
-                  className="w-[300px] text-black"
+                  className="w-[225px] footerXM:w-[300px] text-black"
                 />
 
                 <div className="mt-8 relative items-center mx-auto">
