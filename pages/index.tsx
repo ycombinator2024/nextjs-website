@@ -120,13 +120,13 @@ function HomePage() {
         </div>
         <div className="w-[0px] eight:w-[40%] tw:w-[500px]"></div>
       </div>
-      <div className="bg-black py-24 flex ">
-        <div className="flex flex-col footerSM:flex-row text-xl mx-auto border border-white border-1 ">
-          <div className="flex flex-col items-center footerSM:border-r p-5 gap-2">
+      <div className="bg-black py-16 footerSM:py-24 flex ">
+        <div className="flex flex-col five:flex-row text-md sm:text-xl mx-auto border border-white border-1 ">
+          <div className="flex flex-col items-center five:border-r p-5 gap-2">
             <span>Email</span>
             <span>info@razvedchik.org </span>
           </div>
-          <div className="flex flex-col items-center footerSM:border-r p-5 gap-2">
+          <div className="flex flex-col items-center five:border-r p-5 gap-2">
             <span>Call</span>
             <span>255 352-6258</span>
           </div>

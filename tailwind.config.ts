@@ -39,6 +39,7 @@ module.exports = {
       footerXM: "402px",
       lgMenu: "462px",
       xs: "480px",
+      five: "500px",
       footerSM: "620px",
       sm: "640px",
       sev: "700px",
