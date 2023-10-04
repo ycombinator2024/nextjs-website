@@ -21,6 +21,7 @@ module.exports = {
       white: "#ffffff",
       black: "#000000",
       red: "#E1341E",
+      input: "#DFDEDE",
       transparent: "transparent",
       lightHover: "#E0E0E0",
       analogueBlue: "#0900FF",
@@ -58,4 +59,4 @@ module.exports = {
   },
   plugins: [],
 };
-``
+``;

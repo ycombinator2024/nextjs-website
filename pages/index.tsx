@@ -3,12 +3,14 @@ import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCalendarContext } from "@/context/CalendarContext";
-import { Spinner } from "@chakra-ui/react";
+import { Spinner, useDisclosure } from "@chakra-ui/react";
 import { convertDate } from "@/utils/mapping";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
+import JoinModal from "@/components/HomePage/JoinModal";
 
 function HomePage() {
   const { events, isLoading } = useCalendarContext();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <div className="flex flex-col w-[100vw] text-white">
       <div className="flex flex-col items-center justify-center bg-black pt-16">
@@ -26,9 +28,12 @@ function HomePage() {
               scale: 0.98,
               transition: { duration: 0.1 },
             }}
+            onClick={() => {
+              onOpen();
+            }}
             className="text-xl bg-[#E84A37] hover:bg-[#D42C18] px-5 py-3 rounded-lg"
           >
-            <Link href="/camp">Join Us</Link>
+            Join Us
           </motion.button>
           <motion.button
             whileHover={{
@@ -146,6 +151,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      <JoinModal isOpen={isOpen} onClose={onClose} />
     </div>
   );
 }
