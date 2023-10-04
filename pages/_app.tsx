@@ -18,8 +18,9 @@ export default function App({
   let showNavbar = true;
   if (
     router.pathname === "/membership/adult" ||
-    router.pathname === "//membership/child" ||
-    router.pathname === "//camp-package"
+    router.pathname === "/membership/child" ||
+    router.pathname === "/camp-package" ||
+    router.pathname === "/link-tree"
   ) {
     showNavbar = false;
   }

@@ -124,7 +124,7 @@ function HomePage() {
         <div className="flex flex-col five:flex-row text-md sm:text-xl mx-auto border border-white border-1 ">
           <div className="flex flex-col items-center five:border-r p-5 gap-2">
             <span>Email</span>
-            <span>info@razvedchik.org </span>
+            <span>razvedchik.dnn@gmail.com</span>
           </div>
           <div className="flex flex-col items-center five:border-r p-5 gap-2">
             <span>Call</span>
