@@ -127,7 +127,7 @@ function HomePage() {
           <div className="flex flex-col mt-10 gap-5 text-xl ">
             <span>- Volchata and Belochki 8-11</span>
             <span>- Rasvedchiki and Rasvedchitsi 12-17</span>
-            <span>- Vityazi and Druzhinitsi 18 - 98</span>
+            <span>- Vityazi and Druzhinitsi 18-98</span>
             {/*<span>- Волчата и Белочки 8-11</span>
             <span>- Разведчики и Разведчици 12-17</span>
           <span>- Витязи и Дружчинницы 18 - 98</span>*/}
