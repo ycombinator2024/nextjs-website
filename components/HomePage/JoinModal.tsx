@@ -88,24 +88,26 @@ export default function JoinModal({ isOpen, onClose }: any) {
               className={`  ${inputStyles}`}
               required
             ></input>
-            <label className={`mt-3 ${labelStyles}`}>Phone Number</label>
+            <label className={`mt-3 ${labelStyles}`}>
+              Phone Number <span className="text-[#E53B17] ml-[2px]">*</span>
+            </label>
             <input
               type="text"
               id="phone"
               value={phone}
+              required
               onChange={(event) => setPhone(event.target.value)}
               className={` ${inputStyles}`}
             ></input>
             <label className={`mt-3 ${labelStyles}`}>
-              Number of children and their ages
+              Number of children, their ages, and their names
             </label>
-            <input
-              type="text"
+            <textarea
               id="childrenInfo"
               value={childrenInfo}
               onChange={(event) => setChildrenInfo(event.target.value)}
               className={` ${inputStyles}`}
-            ></input>
+            ></textarea>
             <div className="flex items-center gap-3 mt-5">
               <Checkbox
                 size="lg"
@@ -123,14 +125,14 @@ export default function JoinModal({ isOpen, onClose }: any) {
             <div className="relative items-center mt-8 mx-auto">
               <button
                 type="submit"
-                className={` bg-[#E84A37] hover:bg-[#D42C18] px-5 py-3 rounded-lg  ${labelStyles} ${
+                className={` bg-yellow hover:bg-yellowHover px-5 py-3 rounded-lg  ${labelStyles} ${
                   isLoading ? "opacity-0 pointer-events-none" : ""
                 }`}
               >
                 Submit
               </button>
               {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center  opacity-50 rounded-lg bg-[#E84A37] hover:bg-[#D42C18] px-5 py-3 cursor-not-allowed ">
+                <div className="absolute inset-0 flex items-center justify-center  opacity-50 rounded-lg bg-yellow hover:bg-yellowHover px-5 py-3 cursor-not-allowed ">
                   <Spinner size="md" color="white" />
                 </div>
               )}

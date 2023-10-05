@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   AlertDescription,
   Alert,
@@ -7,18 +7,18 @@ import {
   CloseButton,
   AlertTitle,
   useDisclosure,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 interface ToastProps {
-  message?: string
-  title?: string
+  message?: string;
+  title?: string;
 }
 
 export default function Error({
-  message = 'Please try again later',
-  title = 'Error',
+  message = "Please try again later",
+  title = "Error",
 }: ToastProps): JSX.Element {
-  const { isOpen: isVisible, onClose } = useDisclosure({ defaultIsOpen: true })
+  const { isOpen: isVisible, onClose } = useDisclosure({ defaultIsOpen: true });
 
   return isVisible ? (
     <Alert
@@ -27,7 +27,7 @@ export default function Error({
       alignItems="start"
       borderRadius="md"
       boxShadow="lg"
-      paddingEnd={8}
+      paddingEnd={5}
       textAlign="start"
       width="auto"
       status="error"
@@ -51,5 +51,5 @@ export default function Error({
     </Alert>
   ) : (
     <></>
-  )
+  );
 }

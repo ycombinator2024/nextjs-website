@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function LoadingSpinner() {
   return (
-    <div className="flex justify-center items-center h-[calc(100svh-85px)] bg-light">
+    <div className="flex justify-center items-center h-[calc(100svh-93px)] bg-light">
       <div className="relative flex items-center">
         <Spinner
           thickness="4px"
@@ -15,10 +15,10 @@ export default function LoadingSpinner() {
         />
         <div
           className="absolute
-			w-[125px] h-[165px] ml-[63px]
-			xs:w-[149px] xs:h-[198px] xs:ml-[76px]"
+			w-[116px] h-[116px] ml-[67px]
+			xs:w-[140px] xs:h-[140px] xs:ml-[80px]"
         >
-          <Image src="/favicon_adj.png" alt="Logo" fill />
+          <Image src="/favicon.png" alt="Logo" fill />
         </div>
       </div>
     </div>

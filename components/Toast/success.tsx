@@ -24,11 +24,11 @@ export default function Success({
       addRole={false}
       bg="green"
       alignItems="start"
-      mr="8"
+      mr="5"
       mt="1"
       borderRadius="md"
       boxShadow="lg"
-      paddingEnd={8}
+      paddingEnd={5}
       textAlign="start"
       width="300px"
       status="success"
