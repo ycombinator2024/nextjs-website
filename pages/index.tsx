@@ -203,7 +203,7 @@ function HomePage() {
           </div>
           <div className="flex flex-col items-center five:border-r p-5 gap-2">
             <span>Call</span>
-            <span>999 999-9999</span>
+            <span>(805) 512-6020</span>
           </div>
           <div className="flex flex-col items-center p-5 gap-2">
             <span>Follow Us</span>
