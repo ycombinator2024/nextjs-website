@@ -95,25 +95,25 @@ function HomePage() {
         <div className="mt-16">
           <YouTube
             className="hidden tw:block"
-            videoId="ghguvTAXYdg"
+            videoId="kgOjo6mY0ZY"
             opts={opts}
             onReady={onReady}
           />
           <YouTube
             className="hidden five:block tw:hidden"
-            videoId="ghguvTAXYdg"
+            videoId="kgOjo6mY0ZY"
             opts={opts2}
             onReady={onReady}
           />
           <YouTube
             className="hidden fourteen:block five:hidden"
-            videoId="ghguvTAXYdg"
+            videoId="kgOjo6mY0ZY"
             opts={opts3}
             onReady={onReady}
           />
           <YouTube
             className="block fourteen:hidden"
-            videoId="ghguvTAXYdg"
+            videoId="kgOjo6mY0ZY"
             opts={opts4}
             onReady={onReady}
           />
