@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
+import Script from "next/script";
 
 import { CalendarContextWrapper } from "@/context/CalendarContext";
 import { SessionProvider } from "next-auth/react";
@@ -48,6 +49,18 @@ export default function App({
           </Head>
           {showNavbar && <Navbar />}
           <Component {...pageProps} />
+          <Script
+            defer
+            src="https://www.googletagmanager.com/gtag/js?id=G-CPHP7X765C"
+          ></Script>
+          <Script id="google-analytics">
+            {`
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XLDLXWXZH7');`}
+          </Script>
         </ChakraProvider>
       </CalendarContextWrapper>
     </SessionProvider>
