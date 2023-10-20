@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import useSWR from "swr";
 import { convertDate } from "@/utils/mapping";
+import Image from "next/image";
 
 import { motion } from "framer-motion";
 import { Spinner } from "@chakra-ui/react";
@@ -27,6 +28,8 @@ export default function Admin() {
   const [isEventLoading, setIsEventLoading] = useState(false);
   const [eventDeleteId, setEventDeleteId] = useState("");
   const [isDeleteLoading, setIsDeleteLoading] = useState(false);
+  const [image, setImage] = useState<string>("");
+  const [imageLoading, setImageLoading] = useState(false);
 
   const inputStyles = "text-xl outline-none border rounded-lg p-2";
   const labelStyles = "text-lg";
@@ -55,7 +58,7 @@ export default function Admin() {
     return <LoadingSpinner />;
   }
 
-  let events = [];
+  let events: any = [];
   if (eventsToJSON && eventsToJSON != "[object Object]") {
     events = JSON.parse(eventsToJSON);
   }
@@ -104,6 +107,43 @@ export default function Admin() {
     );
   }
 
+  const handleImageUpload = async (file: File) => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "eyhu7vur");
+
+    const response = await fetch(
+      `https://api.cloudinary.com/v1_1/duaiiecow/image/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+
+    const data = await response.json();
+    return data.secure_url;
+  };
+
+  const handleFileSelect = async (e: Event) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    setImageLoading(true);
+    if (file) {
+      const imageUrl = await handleImageUpload(file);
+      setImage(imageUrl);
+    }
+    setImageLoading(false);
+    return;
+  };
+
+  const handleClick = () => {
+    const input = document.getElementById("input") as HTMLInputElement | null;
+    if (input) {
+      input.type = "file";
+      input.accept = "image/*";
+      input.onchange = handleFileSelect;
+      input.click();
+    }
+  };
   async function createEvent(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsEventLoading(true);
@@ -119,6 +159,7 @@ export default function Admin() {
         from: from,
         to: to,
         email: email,
+        imageUrl: image,
       }),
     });
     const res = await response.json();
@@ -283,6 +324,32 @@ export default function Admin() {
                   isClearable
                   className="w-[225px] footerXM:w-[300px] text-black"
                 />
+                <input type="file" id="input" style={{ display: "none" }} />
+
+                {image.length === 0 ? (
+                  <motion.button
+                    type="button"
+                    whileHover={{
+                      scale: 1.04,
+                      transition: { duration: 0.1 },
+                    }}
+                    whileTap={{
+                      scale: 0.98,
+                      transition: { duration: 0.1 },
+                    }}
+                    className="mt-5 rounded-lg py-[3px] px-3 text-lg footerSM:text-xl mx-auto whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:border-blueHover hover:text-blueHover border-blue text-blue border"
+                    onClick={handleClick}
+                  >
+                    Attach an Image
+                  </motion.button>
+                ) : (
+                  <Image
+                    src={image}
+                    alt="event image"
+                    width={200}
+                    height={200}
+                  />
+                )}
 
                 <div className="mt-8 relative items-center mx-auto">
                   <button

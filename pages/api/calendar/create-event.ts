@@ -8,6 +8,7 @@ const schema = z.object({
   from: z.string().min(1).max(255),
   to: z.string().min(1).max(255),
   email: z.string().min(1).max(255),
+  imageUrl: z.string(),
 });
 
 export default async function handler(
@@ -28,6 +29,7 @@ export default async function handler(
         from: event.from,
         to: event.to,
         email: event.email,
+        imageUrl: event.imageUrl,
       },
     });
 
