@@ -43,7 +43,7 @@ export default async function handler(
 
     const data = {
       from: "Razvedchik.org <razvedchik.dnn@gmail.com>",
-      to: ["niki@malinovsky.net"],
+      to: "niki@malinovsky.net",
       subject: name + " joined.",
       "h:X-Mailgun-Variables": JSON.stringify({
         email: email,
