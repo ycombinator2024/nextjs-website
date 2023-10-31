@@ -37,7 +37,7 @@ export default function Navbar() {
       </div>
       <hr className="h-[1px] opacity-50 bg-[#C2C2C2] w-full border-0 rounded"></hr>
       <div className="bg-[#ffe320] py-2 w-full text-black flex justify-center hover:bg-blue hover:text-white">
-        <div className="mx-5">
+        <div className="mx-5 text-center">
           <span className="semi-bold">
             Get your Winter Gala Tickets! (Jan 12, 2024)&nbsp;
           </span>
