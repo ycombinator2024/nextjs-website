@@ -21,6 +21,7 @@ export default async function handler(
         location: true,
         from: true,
         to: true,
+        imageUrl: true,
       },
     });
 

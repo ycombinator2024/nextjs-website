@@ -51,7 +51,7 @@ export default async function handler(
         childrenInfo: childrenInfo,
         subscribe: isSubed,
       }),
-      template: "joined",
+      template: "joined", 
     };
 
     mg.messages().send(data);

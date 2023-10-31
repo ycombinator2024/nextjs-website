@@ -7,7 +7,7 @@ export default function WebNav() {
   const router = useRouter();
   const { openCart, cartQuantity, closeCart, cartItems, isOpen } =
     useShoppingCart();
-  const LinkStyles = "mr-8 flex items-center";
+  const LinkStyles = "mr-8 flex items-center ";
 
   let isHome = false;
   let isCalendar = false;
@@ -36,7 +36,7 @@ export default function WebNav() {
   }
 
   return (
-    <div className="hidden ml:flex items-center ">
+    <div className="hidden ml:flex items-center">
       <ol className="flex flex-nowrap items-center">
         <li>
           <Link href="/" className={LinkStyles}>

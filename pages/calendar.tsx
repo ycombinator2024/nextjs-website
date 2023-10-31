@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { convertDate } from "@/utils/mapping";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useCalendarContext } from "@/context/CalendarContext";
+import Image from "next/image";
 
 export default function Calendar() {
   const { events, isLoading } = useCalendarContext();
@@ -16,7 +17,13 @@ export default function Calendar() {
         <div className="flex flex-col gap-5 mx-5">
           {events.map((event: any, index: number) => {
             return (
-              <div key={index}>
+              <div key={index} className="flex items-center gap-6">
+                <Image
+                  src={event.imageUrl}
+                  alt="event"
+                  width={100}
+                  height={100}
+                />
                 <div className="flex flex-col">
                   <span className="text-xl xs:text-2xl">
                     {event.event_name}
