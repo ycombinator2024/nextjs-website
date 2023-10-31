@@ -82,7 +82,7 @@ export default function WebNav() {
             <BsCartPlus size="32" />
 
             <div
-              className=" bg-yellow flex justify-center items-center rounded-full"
+              className=" bg-blue flex justify-center items-center rounded-full"
               style={{
                 width: "1.5rem",
                 height: "1.5rem",

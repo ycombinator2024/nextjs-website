@@ -59,7 +59,7 @@ export default function LinkTree() {
               scale: 0.98,
               transition: { duration: 0.1 },
             }}
-            className="text-xl bg-green text-white hover:bg-greenHover px-5 py-3 rounded-lg"
+            className="text-xl bg-purple text-white hover:bg-purpleHover px-5 py-3 rounded-lg"
           >
             Website
           </motion.a>
@@ -75,7 +75,7 @@ export default function LinkTree() {
             onClick={() => {
               onOpen();
             }}
-            className="text-xl bg-yellow hover:bg-yellowHover px-5 py-3 rounded-lg"
+            className="text-xl bg-blue hover:bg-blueHover px-5 py-3 rounded-lg"
           >
             Join Us
           </motion.button>

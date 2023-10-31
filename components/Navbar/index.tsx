@@ -25,7 +25,7 @@ export default function Navbar() {
     useShoppingCart();
 
   return (
-    <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-green text-white ">
+    <div className="flex flex-col w-full justify-center font-helvetica font-normal items-center bg-purple text-white ">
       <div className="flex flex-col w-[95vw] footerXM:w-[90vw] footerSM:w-[85vw] sm:w-[80vw] xxl:w-[1280px] ">
         <nav className="flex text-lg justify-center items-center">
           <Link href="/" className="mr-auto ml-5 py-4">
@@ -36,7 +36,7 @@ export default function Navbar() {
         </nav>
       </div>
       <hr className="h-[1px] opacity-50 bg-[#C2C2C2] w-full border-0 rounded"></hr>
-      <div className="bg-[#ffe320] py-2 w-full text-black flex justify-center hover:bg-yellow hover:text-white">
+      <div className="bg-[#ffe320] py-2 w-full text-black flex justify-center hover:bg-blue hover:text-white">
         <div className="mx-5">
           <span className="semi-bold">
             Get your Winter Gala Tickets! (Jan 12, 2024)&nbsp;
@@ -92,7 +92,7 @@ export default function Navbar() {
               onClick={() => {
                 closeCart();
               }}
-              className="flex gap-1 items-center bg-green rounded-lg px-2 py-1 text-lg"
+              className="flex gap-1 items-center bg-purple rounded-lg px-2 py-1 text-lg"
             >
               Checkout <MdOutlineShoppingCartCheckout />
             </button>

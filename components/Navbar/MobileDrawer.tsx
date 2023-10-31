@@ -60,7 +60,7 @@ export default function MobileDrawer({
           <Link
             href="/"
             className={`  whitespace-nowrap text-center outline-none ${
-              isHome ? "text-green" : ""
+              isHome ? "text-purple" : ""
             }`}
             onClick={() => setIsNavOpen(false)}
           >
@@ -69,7 +69,7 @@ export default function MobileDrawer({
 
           <Link
             href="/calendar"
-            className={`  ${isCalendar ? "text-green" : ""}`}
+            className={`  ${isCalendar ? "text-purple" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             CALENDAR
@@ -77,7 +77,7 @@ export default function MobileDrawer({
 
           <Link
             href="/materials"
-            className={`  ${isMaterials ? "text-green" : ""}`}
+            className={`  ${isMaterials ? "text-purple" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             MATERIALS
@@ -85,7 +85,7 @@ export default function MobileDrawer({
 
           <Link
             href="/camp"
-            className={`  ${isCamp ? "text-green" : ""}`}
+            className={`  ${isCamp ? "text-purple" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             CAMP
@@ -93,7 +93,7 @@ export default function MobileDrawer({
 
           <Link
             href="/photos"
-            className={`  ${isPhotos ? "text-green" : ""}`}
+            className={`  ${isPhotos ? "text-purple" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             PHOTOS

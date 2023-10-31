@@ -42,7 +42,7 @@ export function CartItem({ id, quantity }: CartItemProps) {
         <div> {formatCurrency(item.price * quantity)}</div>
       </div>
       <div className="flex justify-center items-center mt-3 mb-2">
-        <div className="flex items-center justify-center border border-1 text-xl p-1 bg-yellow rounded-lg">
+        <div className="flex items-center justify-center border border-1 text-xl p-1 bg-blue rounded-lg">
           <button
             className="ml-2 mr-2"
             onClick={() => decreaseCartQuantity(index, size)}

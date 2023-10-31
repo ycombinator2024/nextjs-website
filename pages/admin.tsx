@@ -227,7 +227,16 @@ export default function Admin() {
                 events.length > 0 &&
                 events.map((event: any, index: number) => {
                   return (
-                    <div key={index}>
+                    <div
+                      key={index}
+                      className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
+                    >
+                      <Image
+                        src={event.imageUrl}
+                        alt="event"
+                        width={150}
+                        height={150}
+                      />
                       <div className="flex flex-col">
                         <span className="text-xl xs:text-2xl">
                           {event.event_name}

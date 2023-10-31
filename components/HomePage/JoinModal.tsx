@@ -125,14 +125,14 @@ export default function JoinModal({ isOpen, onClose }: any) {
             <div className="relative items-center mt-8 mx-auto">
               <button
                 type="submit"
-                className={` bg-yellow hover:bg-yellowHover px-5 py-3 rounded-lg  ${labelStyles} ${
+                className={` bg-blue hover:bg-blueHover px-5 py-3 rounded-lg  ${labelStyles} ${
                   isLoading ? "opacity-0 pointer-events-none" : ""
                 }`}
               >
                 Submit
               </button>
               {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center  opacity-50 rounded-lg bg-yellow hover:bg-yellowHover px-5 py-3 cursor-not-allowed ">
+                <div className="absolute inset-0 flex items-center justify-center  opacity-50 rounded-lg bg-blue hover:bg-blueHover px-5 py-3 cursor-not-allowed ">
                   <Spinner size="md" color="white" />
                 </div>
               )}

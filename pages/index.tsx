@@ -73,7 +73,7 @@ function HomePage() {
               onClick={() => {
                 onOpen();
               }}
-              className="text-lg five:text-xl bg-yellow hover:bg-yellowHover px-5 py-3 rounded-lg font-semibold"
+              className="text-lg five:text-xl bg-blue hover:bg-blueHover px-5 py-3 rounded-lg font-semibold"
             >
               Join Us
             </motion.button>
@@ -86,7 +86,7 @@ function HomePage() {
                 scale: 0.98,
                 transition: { duration: 0.1 },
               }}
-              className="text-lg five:text-xl bg-green text-white hover:bg-greenHover px-5 py-3 rounded-lg"
+              className="text-lg five:text-xl bg-purple text-white hover:bg-purpleHover px-5 py-3 rounded-lg"
             >
               <Link href="/calendar">View Calendar</Link>
             </motion.button>
@@ -120,7 +120,7 @@ function HomePage() {
         </div>
       </div>
 
-      <div className="flex bg-green py-24 ">
+      <div className="flex bg-purple py-24 ">
         <div className="w-[0px] eight:w-[50%] tw:w-[500px]"></div>
         <div className="bg-light text-black w-[500px] mx-5 five:mx-auto eight:mr-10 tw:mx-auto p-8 rounded-lg">
           <span className="text-3xl sev:text-4xl mx-auto">Age groups</span>
@@ -140,7 +140,7 @@ function HomePage() {
                 scale: 0.98,
                 transition: { duration: 0.1 },
               }}
-              className="text-xl bg-green text-white hover:bg-greenHover px-5 py-3 rounded-lg mx-auto mt-5 mb-3"
+              className="text-xl bg-purple text-white hover:bg-purpleHover px-5 py-3 rounded-lg mx-auto mt-5 mb-3"
             >
               <Link href="/camp">Apply</Link>
             </motion.button>
@@ -151,12 +151,21 @@ function HomePage() {
       <div className="flex justify-center bg-light text-black py-24">
         <div className="mx-auto ">
           <span className="text-4xl mx-5 five:mx-10">Events</span>
-          <div className="bg-green text-white rounded-lg p-5 mt-5 flex flex-col gap-5 mx-5">
+          <div className="bg-purple text-white rounded-lg p-5 mt-5 flex flex-col gap-5 mx-5">
             {events && events.length > 0 ? (
               <>
                 {events.map((event: any, index: number) => {
                   return (
-                    <div key={index}>
+                    <div
+                      key={index}
+                      className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
+                    >
+                      <Image
+                        src={event.imageUrl}
+                        alt="event"
+                        width={150}
+                        height={150}
+                      />
                       <div className="flex flex-col">
                         <span className="text-xl xs:text-2xl">
                           {event.event_name}
@@ -195,7 +204,7 @@ function HomePage() {
         </div>
         <div className="w-[0px] eight:w-[40%] tw:w-[500px]"></div>
       </div>
-      <div className="bg-green text-white  py-16 footerSM:py-24 flex ">
+      <div className="bg-purple text-white  py-16 footerSM:py-24 flex ">
         <div className="flex flex-col five:flex-row text-md sm:text-xl mx-auto border border-white border-1 ">
           <div className="flex flex-col items-center five:border-r p-5 gap-2">
             <span>Email</span>

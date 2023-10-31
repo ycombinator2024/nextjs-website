@@ -13,24 +13,24 @@ export default function Camp() {
             <a
               href="/camp-package.pdf"
               target="_blank"
-              className="bg-yellow text-black rounded-lg transition-colors duration-200 text-xl
-         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-yellowHover "
+              className="bg-blue text-black rounded-lg transition-colors duration-200 text-xl
+         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-blueHover "
             >
               Camp Package
             </a>
             <a
               href="/membership/child"
               target="_blank"
-              className="bg-yellow text-black rounded-lg transition-colors duration-200 text-xl
-         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-yellowHover "
+              className="bg-blue text-black rounded-lg transition-colors duration-200 text-xl
+         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-blueHover "
             >
               Child Membership
             </a>
             <a
               href="/membership/child"
               target="_blank"
-              className="bg-yellow text-black rounded-lg transition-colors duration-200 text-xl
-         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-yellowHover "
+              className="bg-blue text-black rounded-lg transition-colors duration-200 text-xl
+         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-blueHover "
             >
               Adult Membership
             </a>
@@ -44,14 +44,14 @@ export default function Camp() {
               <a
                 href="https://razvedchik.square.site/s/shop"
                 target="_blank"
-                className="bg-yellow text-black rounded-lg transition-colors duration-200 text-xl
-         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-yellowHover "
+                className="bg-blue text-black rounded-lg transition-colors duration-200 text-xl
+         py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-blueHover "
               >
                 Square Site
               </a>
             </span>
             <span
-              className="bg-yellow text-black rounded-lg transition-colors duration-200 text-xl
+              className="bg-blue text-black rounded-lg transition-colors duration-200 text-xl
          py-1 px-3 whitespace-nowrap shadow-md"
             >
               razvedchik.dnn@gmail.com

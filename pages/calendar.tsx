@@ -17,12 +17,15 @@ export default function Calendar() {
         <div className="flex flex-col gap-5 mx-5">
           {events.map((event: any, index: number) => {
             return (
-              <div key={index} className="flex items-center gap-6">
+              <div
+                key={index}
+                className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
+              >
                 <Image
                   src={event.imageUrl}
                   alt="event"
-                  width={100}
-                  height={100}
+                  width={150}
+                  height={150}
                 />
                 <div className="flex flex-col">
                   <span className="text-xl xs:text-2xl">
