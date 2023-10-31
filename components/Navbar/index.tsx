@@ -45,7 +45,7 @@ export default function Navbar() {
           <span className="semi-bold">
             Get your Winter Gala Tickets! (Jan 12, 2024)&nbsp;
           </span>
-          <span className="underline">Buy here.</span>
+          <span className="underline">Buy here</span>
         </div>
       </a>
       {/*<Drawer isOpen={isOpen} onClose={closeCart} size="lg">
