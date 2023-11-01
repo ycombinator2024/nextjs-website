@@ -17,6 +17,10 @@ model calendar {
   to         DateTime @default(dbgenerated("(now() AT TIME ZONE 'utc'::text)")) @db.Timestamptz(6)
   email      String   @default("")
   imageUrl   String   @default("")
+  buttonOption String   @default("")
+  squareSiteLink String   @default("")
+  ticketPrice String   @default("")
+  disclaimer String   @default("")
 }
 
 /// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.

@@ -15,14 +15,6 @@ export default async function handler(
       orderBy: {
         from: "asc",
       },
-      select: {
-        id: true,
-        event_name: true,
-        location: true,
-        from: true,
-        to: true,
-        imageUrl: true,
-      },
     });
 
     const events = JSON.stringify(unserializedEvents, (_, value) =>

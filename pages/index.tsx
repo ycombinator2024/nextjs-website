@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useCalendarContext } from "@/context/CalendarContext";
@@ -8,11 +8,21 @@ import { convertDate } from "@/utils/mapping";
 import { BsFacebook, BsInstagram } from "react-icons/bs";
 import JoinModal from "@/components/HomePage/JoinModal";
 import YouTube from "react-youtube";
+import TicketModal from "@/components/HomePage/TicketModal";
 // https://www.youtube.com/watch?v=4N55fVuxxOg
 
 function HomePage() {
   const { events, isLoading } = useCalendarContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isTicketOpen,
+    onOpen: onTicketOpen,
+    onClose: onTicketClose,
+  } = useDisclosure();
+  const [squareSiteLink, setSquareSiteLink] = useState("");
+  const [ticketPrice, setTicketPrice] = useState("");
+  const [disclaimer, setDisclaimer] = useState("");
+  const [title, setTitle] = useState("");
   const opts = {
     height: "300",
     width: "534",
@@ -161,7 +171,10 @@ function HomePage() {
                       className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
                     >
                       <Image
-                        src={event.imageUrl}
+                        src={
+                          event.imageUrl ||
+                          "https://res.cloudinary.com/duaiiecow/image/upload/v1698730024/rcvhbweur9cgg3umpg9b.png"
+                        }
                         alt="event"
                         width={150}
                         height={150}
@@ -177,6 +190,20 @@ function HomePage() {
                           {event.location}
                         </span>
                       </div>
+                      {event.buttonOption === "Get Tickets" && (
+                        <button
+                          className="text-white ml-8 text-xl bg-blue hover:bg-blueHover px-5 py-3 rounded-lg mx-auto mb-3"
+                          onClick={() => {
+                            setSquareSiteLink(event.squareSiteLink);
+                            setTicketPrice(event.ticketPrice);
+                            setDisclaimer(event.disclaimer);
+                            setTitle(event.event_name);
+                            onTicketOpen();
+                          }}
+                        >
+                          Get Tickets
+                        </button>
+                      )}
                     </div>
                   );
                 })}
@@ -252,6 +279,14 @@ function HomePage() {
         </div>
       </div>
       <JoinModal isOpen={isOpen} onClose={onClose} />
+      <TicketModal
+        isOpen={isTicketOpen}
+        onClose={onTicketClose}
+        squareSiteLink={squareSiteLink}
+        ticketPrice={ticketPrice}
+        disclaimer={disclaimer}
+        title={title}
+      />
     </div>
   );
 }

@@ -9,6 +9,10 @@ const schema = z.object({
   to: z.string().min(1).max(255),
   email: z.string().min(1).max(255),
   imageUrl: z.string(),
+  buttonOption: z.string(),
+  squareSiteLink: z.string(),
+  ticketPrice: z.string(),
+  disclaimer: z.string(),
 });
 
 export default async function handler(
@@ -30,6 +34,10 @@ export default async function handler(
         to: event.to,
         email: event.email,
         imageUrl: event.imageUrl,
+        buttonOption: event.buttonOption,
+        squareSiteLink: event.squareSiteLink,
+        ticketPrice: event.ticketPrice,
+        disclaimer: event.disclaimer,
       },
     });
 

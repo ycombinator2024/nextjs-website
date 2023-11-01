@@ -22,7 +22,10 @@ export default function Calendar() {
                 className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
               >
                 <Image
-                  src={event.imageUrl}
+                  src={
+                    event.imageUrl ||
+                    "https://res.cloudinary.com/duaiiecow/image/upload/v1698730024/rcvhbweur9cgg3umpg9b.png"
+                  }
                   alt="event"
                   width={150}
                   height={150}
