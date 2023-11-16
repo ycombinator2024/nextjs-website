@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import { convertDate } from "@/utils/mapping";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useCalendarContext } from "@/context/CalendarContext";
 import Image from "next/image";
+import { useDisclosure } from "@chakra-ui/react";
+import TicketModal from "@/components/HomePage/TicketModal";
 
 export default function Calendar() {
   const { events, isLoading } = useCalendarContext();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isTicketOpen,
+    onOpen: onTicketOpen,
+    onClose: onTicketClose,
+  } = useDisclosure();
+  const [squareSiteLink, setSquareSiteLink] = useState("");
+  const [ticketPrice, setTicketPrice] = useState("");
+  const [disclaimer, setDisclaimer] = useState("");
+  const [title, setTitle] = useState("");
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
@@ -19,7 +32,7 @@ export default function Calendar() {
             return (
               <div
                 key={index}
-                className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
+                className="flex flex-col lg:flex-row items-center justify-center gap-4 five:gap-6"
               >
                 <Image
                   src={
@@ -30,7 +43,7 @@ export default function Calendar() {
                   width={150}
                   height={150}
                 />
-                <div className="flex flex-col">
+                <div className="flex flex-col text-center lg:text-left ">
                   <span className="text-xl xs:text-2xl">
                     {event.event_name}
                   </span>
@@ -39,11 +52,35 @@ export default function Calendar() {
                   </span>
                   <span className="text-md xs:text-lg">{event.location}</span>
                 </div>
+                {event.buttonOption === "Get Tickets" ? (
+                  <button
+                    className="text-white lg:ml-8 text-xl bg-blue hover:bg-blueHover px-5 py-3 rounded-lg mb-3 whitespace-nowrap"
+                    onClick={() => {
+                      setSquareSiteLink(event.squareSiteLink);
+                      setTicketPrice(event.ticketPrice);
+                      setDisclaimer(event.disclaimer);
+                      setTitle(event.event_name);
+                      onTicketOpen();
+                    }}
+                  >
+                    Get Tickets
+                  </button>
+                ) : (
+                  <div className="ml-auto"></div>
+                )}
               </div>
             );
           })}
         </div>
       )}
+      <TicketModal
+        isOpen={isTicketOpen}
+        onClose={onTicketClose}
+        squareSiteLink={squareSiteLink}
+        ticketPrice={ticketPrice}
+        disclaimer={disclaimer}
+        title={title}
+      />
     </div>
   );
 }

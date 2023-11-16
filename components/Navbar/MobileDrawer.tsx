@@ -52,15 +52,15 @@ export default function MobileDrawer({
       size="full"
       onClose={() => setIsNavOpen(!isNavOpen)}
     >
-      <DrawerContent mt="85px" className="text-2xl" bg="#f9fde6">
+      <DrawerContent className="text-2xl" bg="#3D405B">
         <DrawerBody
           p={0}
-          className="flex flex-col items-center text-3xl gap-16 mt-16"
+          className="flex flex-col items-center text-3xl gap-16 mt-16 text-white"
         >
           <Link
             href="/"
-            className={`  whitespace-nowrap text-center outline-none ${
-              isHome ? "text-purple" : ""
+            className={` whitespace-nowrap text-center outline-none ${
+              isHome ? "text-yellow" : ""
             }`}
             onClick={() => setIsNavOpen(false)}
           >
@@ -69,7 +69,7 @@ export default function MobileDrawer({
 
           <Link
             href="/calendar"
-            className={`  ${isCalendar ? "text-purple" : ""}`}
+            className={`  ${isCalendar ? "text-yellow" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             CALENDAR
@@ -77,7 +77,7 @@ export default function MobileDrawer({
 
           <Link
             href="/materials"
-            className={`  ${isMaterials ? "text-purple" : ""}`}
+            className={`  ${isMaterials ? "text-yellow" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             MATERIALS
@@ -85,7 +85,7 @@ export default function MobileDrawer({
 
           <Link
             href="/camp"
-            className={`  ${isCamp ? "text-purple" : ""}`}
+            className={`  ${isCamp ? "text-yellow" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             CAMP
@@ -93,7 +93,7 @@ export default function MobileDrawer({
 
           <Link
             href="/photos"
-            className={`  ${isPhotos ? "text-purple" : ""}`}
+            className={`  ${isPhotos ? "text-yellow" : ""}`}
             onClick={() => setIsNavOpen(false)}
           >
             PHOTOS

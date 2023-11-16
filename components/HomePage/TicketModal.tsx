@@ -51,9 +51,8 @@ export default function TicketModal({
             </motion.a>
             <span>Or</span>
             <span className="text-center">
-              {" "}
-              Zelle {ticketPrice} to razvedchik.dnn@gmail.com with subject as{" "}
-              {title}.{" "}
+              Zelle {ticketPrice} to razvedchik.dnn@gmail.com with the memo
+              containing {title} and the participant scout's name.{" "}
               <a
                 className="underline"
                 href="https://www.zellepay.com/"

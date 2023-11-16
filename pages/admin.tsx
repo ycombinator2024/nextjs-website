@@ -396,7 +396,8 @@ export default function Admin() {
                   </button>
                   <button
                     className={`border p-2 rounded-r-xl ${
-                      buttonOption === "Get Tickets" && "bg-black border-blue"
+                      buttonOption === "Get Tickets" &&
+                      "bg-black border-blue whitespace-nowrap mx-auto"
                     }`}
                     onClick={() => {
                       setButtonOption("Get Tickets");

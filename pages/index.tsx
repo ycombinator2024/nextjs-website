@@ -168,7 +168,7 @@ function HomePage() {
                   return (
                     <div
                       key={index}
-                      className="flex flex-col five:flex-row items-center gap-4 five:gap-6"
+                      className="flex flex-col lg:flex-row items-center justify-center gap-4 five:gap-6"
                     >
                       <Image
                         src={
@@ -179,7 +179,7 @@ function HomePage() {
                         width={150}
                         height={150}
                       />
-                      <div className="flex flex-col">
+                      <div className="flex flex-col text-center lg:text-left ">
                         <span className="text-xl xs:text-2xl">
                           {event.event_name}
                         </span>
@@ -190,9 +190,9 @@ function HomePage() {
                           {event.location}
                         </span>
                       </div>
-                      {event.buttonOption === "Get Tickets" && (
+                      {event.buttonOption === "Get Tickets" ? (
                         <button
-                          className="text-white ml-8 text-xl bg-blue hover:bg-blueHover px-5 py-3 rounded-lg mx-auto mb-3"
+                          className="text-white lg:ml-8 text-xl bg-blue hover:bg-blueHover px-5 py-3 rounded-lg mb-3 whitespace-nowrap"
                           onClick={() => {
                             setSquareSiteLink(event.squareSiteLink);
                             setTicketPrice(event.ticketPrice);
@@ -203,6 +203,8 @@ function HomePage() {
                         >
                           Get Tickets
                         </button>
+                      ) : (
+                        <div className="ml-auto"></div>
                       )}
                     </div>
                   );

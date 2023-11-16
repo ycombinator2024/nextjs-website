@@ -7,8 +7,8 @@ module.exports = {
   ],
   theme: {
     colors: {
-      yellow: "#6D98BA",
-      yellowHover: "#4E7FA6",
+      yellow: "#fbe710",
+      yellowHover: "#D4C304",
       blue: "#6D98BA",
       blueHover: "#4E7FA6",
       orange: "#E84A37",
