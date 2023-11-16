@@ -52,7 +52,7 @@ export default function TicketModal({
             <span>Or</span>
             <span className="text-center">
               Zelle {ticketPrice} to razvedchik.dnn@gmail.com with the memo
-              containing {title} and the participant scout's name.{" "}
+              containing {title} and the participant scout&apos;s name.{" "}
               <a
                 className="underline"
                 href="https://www.zellepay.com/"
