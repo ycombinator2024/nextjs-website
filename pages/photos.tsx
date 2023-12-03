@@ -1,8 +1,9 @@
 import React from "react";
-import Image from "next/image";
 
-import Link from "next/link";
 import { useState } from "react";
+import useSWR from "swr";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import YouTube from "react-youtube";
 
 export const getStaticProps = async () => {
   const divArray = Array.from({ length: 33 }, (_, index) => index + 1);
@@ -17,8 +18,103 @@ export const getStaticProps = async () => {
 export default function Photos({ divArray }: { divArray: number[] }) {
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
+
+  const opts = {
+    height: "300",
+    width: "534",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  const opts4 = {
+    height: "177",
+    width: "315",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
+
+  const onReady = (event: any) => {
+    event.target.mute();
+  };
+
+  let url = `/api/photos/get-cloudinary-photos?folderName=Collage/Catalina Trip 2023`;
+
+  const { data: catalinaPhotos, isLoading } = useSWR(url, async () => {
+    const res = await fetch(url);
+    return res.json();
+  });
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+
   return (
     <div className="min-h-[calc(100svh-133px)] py-8 px-4 ml:pr-8 bg-light">
+      <h2 className="text-2xl mx-auto text-center">
+        Catalina Trip November 2023
+      </h2>
+      {/* <div className="flex p-1 pb-3 bg-gray rounded-lg outline-none shadow-lg"> */}
+      <div className="my-5 mx-auto flex items-center justify-center">
+        <YouTube
+          className="hidden footerSM:block"
+          videoId="eV7_IkguORM"
+          opts={opts}
+          onReady={onReady}
+        />
+        <YouTube
+          className="footerSM:hidden"
+          videoId="eV7_IkguORM"
+          opts={opts4}
+          onReady={onReady}
+        />
+      </div>
+
+      <div className="columns-1 xs:columns-2 lg:columns-3 mb-5">
+        {catalinaPhotos.videoAssets.map(
+          (asset: { url: string }, index: number) => {
+            return (
+              <div
+                className="transition-all duration-350 ease-in-out mb-5"
+                key={index}
+              >
+                <video muted controls>
+                  <source src={asset.url} type="video/mp4" />
+                </video>
+              </div>
+            );
+          }
+        )}
+      </div>
+      <div className="columns-1 xs:columns-2 lg:columns-3">
+        {catalinaPhotos.imageAssets.map(
+          (asset: { url: string }, index: number) => {
+            return (
+              <div
+                className="transition-all duration-350 ease-in-out mb-5"
+                key={index}
+                onClick={() => {
+                  // setSlideNumber(index);
+                  // setOpenModal(true);
+                }}
+              >
+                <img
+                  src={asset.url}
+                  alt={`Catalina Trip ${index}`}
+                  style={{ width: "100%" }}
+                  loading="lazy"
+                />
+              </div>
+            );
+          }
+        )}
+      </div>
+
+      {/* </div> */}
+      <div className="mb-16"></div>
+      <h2 className="text-2xl mx-auto text-center mb-5">Other Photos</h2>
       <div className="columns-1 xs:columns-2 lg:columns-3">
         {divArray.map((index: number) => {
           return (

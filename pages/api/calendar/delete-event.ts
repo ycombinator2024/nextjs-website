@@ -26,7 +26,7 @@ export default async function handler(
 
     res.status(200).json({ message: "Event Created" });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     if (err instanceof ZodError) {
       res.status(400).json({ message: err.message });
     } else {
