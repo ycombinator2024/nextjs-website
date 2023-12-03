@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 export default function Photos({ divArray }: { divArray: number[] }) {
   const [slideNumber, setSlideNumber] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-
+  const [areVideosLoading, setAreVideosLoading] = useState(true);
   const opts = {
     height: "300",
     width: "534",
@@ -50,7 +50,6 @@ export default function Photos({ divArray }: { divArray: number[] }) {
     return <LoadingSpinner />;
   }
 
-
   return (
     <div className="min-h-[calc(100svh-133px)] py-8 px-4 ml:pr-8 bg-light">
       <h2 className="text-2xl mx-auto text-center">
@@ -77,10 +76,18 @@ export default function Photos({ divArray }: { divArray: number[] }) {
           (asset: { url: string }, index: number) => {
             return (
               <div
-                className="transition-all duration-350 ease-in-out mb-5"
+                className={`transition-all duration-350 ease-in-out mb-5 ${
+                  areVideosLoading ? "hidden" : "block"
+                }`}
                 key={index}
               >
-                <video muted controls>
+                <video
+                  muted
+                  controls
+                  onLoadedData={() => {
+                    setAreVideosLoading(false);
+                  }}
+                >
                   <source src={asset.url} type="video/mp4" />
                 </video>
               </div>
@@ -93,7 +100,9 @@ export default function Photos({ divArray }: { divArray: number[] }) {
           (asset: { url: string }, index: number) => {
             return (
               <div
-                className="transition-all duration-350 ease-in-out mb-5"
+                className={`transition-all duration-350 ease-in-out mb-5  ${
+                  areVideosLoading ? "hidden" : "block"
+                }`}
                 key={index}
                 onClick={() => {
                   // setSlideNumber(index);
@@ -119,7 +128,9 @@ export default function Photos({ divArray }: { divArray: number[] }) {
         {divArray.map((index: number) => {
           return (
             <div
-              className="transition-all duration-350 ease-in-out mb-5"
+              className={`transition-all duration-350 ease-in-out mb-5 ${
+                areVideosLoading ? "hidden" : "block"
+              }`}
               key={index}
               onClick={() => {
                 // setSlideNumber(index);
