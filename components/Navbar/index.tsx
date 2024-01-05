@@ -36,7 +36,7 @@ export default function Navbar() {
         </nav>
       </div>
       <hr className="h-[1px] opacity-50 bg-[#C2C2C2] w-full border-0 rounded"></hr>
-      <a
+      {/* <a
         href="https://www.zeffy.com/en-US/ticketing/becab808-3c97-462e-b0d7-b26b5fd76e79"
         target="_blank"
         className="bg-[#ffe320] py-2 w-full text-black flex justify-center hover:bg-blue hover:text-white"
@@ -47,7 +47,7 @@ export default function Navbar() {
           </span>
           <span className="underline">Buy here</span>
         </div>
-      </a>
+      </a> */}
       {/*<Drawer isOpen={isOpen} onClose={closeCart} size="lg">
         <DrawerOverlay />
         <DrawerContent>
