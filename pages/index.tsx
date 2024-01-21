@@ -116,7 +116,7 @@ function HomePage() {
             </motion.button>
           </div>
         </div>
-
+        <div className="absolute top-[92px] left-0 z-[2] hidden tw:block bg-blue bg-opacity-10 w-[100vw] h-[calc(100svh-93px)]"></div>
         <div className="absolute top-[92px] left-0 z-[1] hidden tw:block ">
           <iframe
             src="https://www.youtube.com/embed/kgOjo6mY0ZY?autoplay=1&mute=1&loop=1"
