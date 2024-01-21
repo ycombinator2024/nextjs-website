@@ -11,6 +11,8 @@ import YouTube from "react-youtube";
 import TicketModal from "@/components/HomePage/TicketModal";
 // https://www.youtube.com/watch?v=4N55fVuxxOg
 
+import EventModal from "@/components/Modal/EventModal";
+
 function HomePage() {
   const { events, isLoading } = useCalendarContext();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,6 +25,14 @@ function HomePage() {
   const [ticketPrice, setTicketPrice] = useState("");
   const [disclaimer, setDisclaimer] = useState("");
   const [title, setTitle] = useState("");
+
+  const {
+    isOpen: isImageOpen,
+    onOpen: onImageOpen,
+    onClose: onImageClose,
+  } = useDisclosure();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const opts = {
     height: "300",
     width: "534",
@@ -178,6 +188,11 @@ function HomePage() {
                         alt="event"
                         width={150}
                         height={150}
+                        className="cursor-pointer"
+                        onClick={() => {
+                          setSelectedImage(event.imageUrl);
+                          onImageOpen();
+                        }}
                       />
                       <div className="flex flex-col text-center lg:text-left ">
                         <span className="text-xl xs:text-2xl">
@@ -288,6 +303,12 @@ function HomePage() {
         ticketPrice={ticketPrice}
         disclaimer={disclaimer}
         title={title}
+      />
+      <EventModal
+        isImageOpen={isImageOpen}
+        onImageClose={onImageClose}
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
       />
     </div>
   );

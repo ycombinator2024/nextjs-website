@@ -6,10 +6,11 @@ import { useCalendarContext } from "@/context/CalendarContext";
 import Image from "next/image";
 import { useDisclosure } from "@chakra-ui/react";
 import TicketModal from "@/components/HomePage/TicketModal";
+import EventModal from "@/components/Modal/EventModal";
 
 export default function Calendar() {
   const { events, isLoading } = useCalendarContext();
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   const {
     isOpen: isTicketOpen,
     onOpen: onTicketOpen,
@@ -19,6 +20,13 @@ export default function Calendar() {
   const [ticketPrice, setTicketPrice] = useState("");
   const [disclaimer, setDisclaimer] = useState("");
   const [title, setTitle] = useState("");
+
+  const {
+    isOpen: isImageOpen,
+    onOpen: onImageOpen,
+    onClose: onImageClose,
+  } = useDisclosure();
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (isLoading) {
     return <LoadingSpinner />;
@@ -42,6 +50,11 @@ export default function Calendar() {
                   alt="event"
                   width={150}
                   height={150}
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setSelectedImage(event.imageUrl);
+                    onImageOpen();
+                  }}
                 />
                 <div className="flex flex-col text-center lg:text-left ">
                   <span className="text-xl xs:text-2xl">
@@ -80,6 +93,12 @@ export default function Calendar() {
         ticketPrice={ticketPrice}
         disclaimer={disclaimer}
         title={title}
+      />
+      <EventModal
+        isImageOpen={isImageOpen}
+        onImageClose={onImageClose}
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
       />
     </div>
   );
