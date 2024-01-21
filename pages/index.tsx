@@ -38,6 +38,7 @@ function HomePage() {
     width: "534",
     playerVars: {
       autoplay: 1,
+      disablekb: 1,
     },
   };
 
@@ -46,6 +47,7 @@ function HomePage() {
     width: "445",
     playerVars: {
       autoplay: 1,
+      disablekb: 1,
     },
   };
 
@@ -54,6 +56,7 @@ function HomePage() {
     width: "381",
     playerVars: {
       autoplay: 1,
+      disablekb: 1,
     },
   };
 
@@ -62,6 +65,7 @@ function HomePage() {
     width: "315",
     playerVars: {
       autoplay: 1,
+      disablekb: 1,
     },
   };
 
@@ -71,9 +75,9 @@ function HomePage() {
 
   return (
     <div className="flex flex-col w-[100vw] text-black">
-      <div className="flex flex-col lg:flex-row items-center justify-center bg-light pt-12 pb-16 lg:gap-20 tw:gap-32">
-        <div className="flex flex-col items-center justify-center bg-light">
-          <span className="text-5xl five:text-6xl tw:text-7xl font-semibold">
+      <div className="flex flex-col tw:flex-row items-center justify-center bg-transparent pt-12 pb-16 tw:gap-32 h-[calc(100svh-94px)] ">
+        <div className="flex flex-col items-center justify-center bg-light z-[50] p-5 tw:absolute tw:left-[10%] tw:top-[300px] rounded-lg">
+          <span className="text-5xl five:text-6xl tw:text-7xl font-semibold ">
             ST. GEORGE
           </span>{" "}
           <span className="text-5xl five:text-6xl tw:text-7xl mt-5 font-semibold">
@@ -112,27 +116,34 @@ function HomePage() {
             </motion.button>
           </div>
         </div>
-        <div className="mt-16">
-          <YouTube
+
+        <div className="absolute top-[92px] left-0 z-[1] hidden tw:block ">
+          <iframe
+            src="https://www.youtube.com/embed/kgOjo6mY0ZY?autoplay=1&mute=1&loop=1"
+            className="w-[100vw] h-[calc(100svh-93px)]"
+          ></iframe>
+        </div>
+        <div className="mt-16 flex p-2 bg-black rounded-lg outline-none shadow-lg">
+          {/* <YouTube
             className="hidden tw:block"
             videoId="kgOjo6mY0ZY"
             opts={opts}
             onReady={onReady}
-          />
+            />*/}
           <YouTube
-            className="hidden five:block tw:hidden"
+            className="hidden five:block tw:hidden outline-none"
             videoId="kgOjo6mY0ZY"
             opts={opts2}
             onReady={onReady}
           />
           <YouTube
-            className="hidden fourteen:block five:hidden"
+            className="hidden fourteen:block five:hidden outline-none"
             videoId="kgOjo6mY0ZY"
             opts={opts3}
             onReady={onReady}
           />
           <YouTube
-            className="block fourteen:hidden"
+            className="block fourteen:hidden outline-none"
             videoId="kgOjo6mY0ZY"
             opts={opts4}
             onReady={onReady}
