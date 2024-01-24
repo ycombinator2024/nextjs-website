@@ -36,18 +36,17 @@ export default function Navbar() {
         </nav>
       </div>
       <hr className="h-[1px] opacity-50 bg-[#C2C2C2] w-full border-0 rounded"></hr>
-      {/* <a
-        href="https://www.zeffy.com/en-US/ticketing/becab808-3c97-462e-b0d7-b26b5fd76e79"
-        target="_blank"
+      <Link
+        href="/camp"
         className="bg-[#ffe320] py-2 w-full text-black flex justify-center hover:bg-blue hover:text-white"
       >
         <div className="mx-5 text-center">
           <span className="semi-bold">
-            Get your Winter Gala Tickets! (Jan 12, 2024)&nbsp;
+            Submit your yearly dues by March 31st! &nbsp;
           </span>
-          <span className="underline">Buy here</span>
+          <span className="underline">Forms here</span>
         </div>
-      </a> */}
+      </Link>
       {/*<Drawer isOpen={isOpen} onClose={closeCart} size="lg">
         <DrawerOverlay />
         <DrawerContent>
