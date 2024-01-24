@@ -28,7 +28,7 @@ export default function Camp() {
                 Child Membership
               </a>
               <a
-                href="/membership/child"
+                href="/membership/adult"
                 target="_blank"
                 className="bg-blue text-black rounded-lg transition-colors duration-200 text-xl
          py-1 px-3 whitespace-nowrap shadow-md hover:shadow-lg cursor-pointer hover:bg-blueHover "

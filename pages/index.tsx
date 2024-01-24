@@ -32,7 +32,7 @@ function HomePage() {
     onClose: onImageClose,
   } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
+  const [muteVideo, setMuteVideo] = useState(1);
   const opts = {
     height: "300",
     width: "534",
@@ -115,11 +115,21 @@ function HomePage() {
               <Link href="/calendar">View Calendar</Link>
             </motion.button>
           </div>
+          <button
+            className="text-white z-[52]"
+            onClick={(e) => {
+              setMuteVideo(0);
+              console.log("HERE");
+            }}
+          >
+            MUTE/UNMUTE
+          </button>
         </div>
+
         <div className="absolute top-[92px] left-0 z-[2] hidden tw:block bg-blue bg-opacity-10 w-[100vw] h-[calc(100svh-93px)]"></div>
         <div className="absolute top-[92px] left-0 z-[1] hidden tw:block ">
           <iframe
-            src="https://www.youtube.com/embed/kgOjo6mY0ZY?autoplay=1&mute=1&loop=1"
+            src={`https://www.youtube.com/embed/kgOjo6mY0ZY?autoplay=1&mute=${muteVideo}&loop=1`}
             className="w-[100vw] h-[calc(100svh-93px)]"
           ></iframe>
         </div>
