@@ -1,3 +1,19 @@
+export async function getServerSideProps(context) {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/photos/get-cloudinary-photos?page=${context.query.page || 1}`);
+import { useEffect, useState } from 'react';
+import useSWRInfinite from 'swr/infinite';
+
+const fetcher = (url) => fetch(url).then((res) => res.json());
+
+export default function Merchandise() {
+  const { data, error, size, setSize } = useSWRInfinite((index) => `/api/photos/get-cloudinary-photos?page=${index + 1}`, fetcher);
+  const photos = data ? data.reduce((acc, val) => [...acc, ...val.photos], []) : [];
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) setSize(size + 1);
+    };
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
 import React from "react";
 // import { ReactPhotoCollage } from "react-photo-collage";
 import { motion } from "framer-motion";
