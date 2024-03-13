@@ -22,6 +22,10 @@ description: ''
 
 # This sets whether to create pull requests as drafts. If this is set to True, then all pull requests will be created as drafts and GitHub Actions will not be triggered.
 draft: False
+blocked_dirs:
+  - "node_modules"
+  - ".next"
 
+description: 'This Next.js project is focused on providing an engaging web experience for event planning and shopping. Key technologies include React, Next.js, TailwindCSS, and Prisma.'
 # This is a list of directories that Sweep will not be able to edit.
 blocked_dirs: []
