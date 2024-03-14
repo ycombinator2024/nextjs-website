@@ -12,4 +12,8 @@ body:
         Unit Tests: Write unit tests for <FILE>. Test each function in the file. Make sure to test edge cases.
         Bugs: The bug might be in <FILE>. Here are the logs: ...
         Features: the new endpoint should use the ... class from <FILE> because it contains ... logic.
+        Feature Projects: Implement the auto-generation of pull requests within our development workflow to streamline integrating changes. This should automate the PR process for 'nikita-staging' branch, with rules for automation based on branch changes, task completion, or all unit tests passing.
+        Notification System: Develop a notification mechanism to alert team members of newly created pull requests, ensuring prompt reviews.
+        Progress Tracking: Implement a progress tracking system to provide real-time updates on the status of pull requests.
+        Review and Merge Protocol: Set up a review and merge protocol that mandates code reviews by at least two team members and requires all continuous integration checks to pass before merging.
         Refactors: We are migrating this function to ... version because ...
