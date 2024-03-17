@@ -9,6 +9,7 @@ jobs:
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
+        branch_ignore_pattern: '^.*(main|master|develop).*$'
     - name: Extract Branch Name
       id: extract-branch
       run: echo "::set-output name=BRANCH::$(echo '${{ github.event.comment.body }}' | grep -oP '(?<=- \[x\] Generate PR - ).*')"
