@@ -1,4 +1,3 @@
-export const helloWorld = () => "Hello World";
 import Image from "next/image";
 import React, { useState } from "react";
 import Link from "next/link";
