@@ -7,7 +7,6 @@ body:
     id: description
     attributes:
       label: Details
-      placeholder: | Issue details missing for "z".
       description: Tell Sweep where and what to edit and provide enough context for a new developer to the codebase
       placeholder: |
         Unit Tests: Write unit tests for <FILE>. Test each function in the file. Make sure to test edge cases.
