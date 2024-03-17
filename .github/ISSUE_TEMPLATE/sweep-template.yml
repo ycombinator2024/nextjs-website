@@ -1,13 +1,5 @@
 name: Sweep Issue
 title: 'Sweep: '
-  - type: checkboxes
-    id: actions
-    attributes:
-      label: Actions Required
-      description: Select the actions you want to trigger.
-      options:
-        - label: Generate PR
-          required: true
 description: For small bugs, features, refactors, and tests to be handled by Sweep, an AI-powered junior developer.
 labels: sweep
 body:
