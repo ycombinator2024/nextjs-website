@@ -1,0 +1,22 @@
+name: Auto PR Creation
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  auto-pr:
+    runs-on: ubuntu-latest
+    if: contains(github.event.comment.body, '- [x] Generate PR')
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Extract Branch Name
+      id: extract-branch
+      run: echo "::set-output name=BRANCH::$(echo '${{ github.event.comment.body }}' | grep -oP '(?<=- \[x\] Generate PR - ).*')"
+    - name: Create Pull Request
+      uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        destination_branch: ${{ steps.extract-branch.outputs.BRANCH}}
+        pr_title: "Automated PR from Issue Comment"
+        pr_body: "This PR has been automatically generated from an issue comment."
+        pr_label: "automated-pr"
