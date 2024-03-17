@@ -1,20 +1,6 @@
 # Pull Request Template
 
-# Pull Request for Issue: "testing"
-
-**Body:**
-
-Given the nature of the comments and the process involved, it's not entirely clear whether we're addressing a bug fix or introducing a new feature. Therefore, I'll outline a generic template for both, which should be tailored to fit the actual issue at hand.
-
-### If this is a bug fix:
-
-```
-## Why the bug occurs
-
-## How to reproduce
-
-## How to fix
-```
+Choose one of the following templates based on the nature of the pull request:
 
 ## Bug Fix Template
 
