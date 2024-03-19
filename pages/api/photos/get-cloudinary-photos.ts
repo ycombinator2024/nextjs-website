@@ -1,3 +1,18 @@
+import type { NextApiRequest, NextApiResponse } from 'next';
+import cloudinary from 'cloudinary';
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const { page = 1, limit = 10 } = req.query;
+  const { resources } = await cloudinary.v2.api.resources({
+    type: 'upload',
+    prefix: 'merch',
+    max_results: limit,
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { z, ZodError } from "zod";
