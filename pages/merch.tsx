@@ -1,36 +1,3 @@
-import useSWRInfinite from 'swr/infinite';
-import axios from 'axios';
-import MerchandiseCard from '../components/Merch/MerchandiseCard';
-const fetcher = url => axios.get(url).then(res => res.data);
-const getKey = (pageIndex, previousPageData) => {
-  if (previousPageData && !previousPageData.length) return null;
-  return `/api/merchandise/get-merchandise?page=${pageIndex + 1}`;
-};
-export default function MerchPage() {
-  const {data, error, size, setSize} = useSWRInfinite(getKey, fetcher, {initialSize: 1});
-  const merchandise = data ? data.flat() : [];
-  const isLoadingInitialData = !data && !error;
-  const isLoadingMore =
-    isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === 'undefined');
-  const isReachingEnd = data && data[data.length - 1]?.length < 10;
-  const loadMore = () => {
-    if (!isLoadingMore && !isReachingEnd) {
-      setSize(size + 1);
-    }
-  };
-  return (
-    <div>
-      <div>
-        {merchandise.map(item => (
-          <MerchandiseCard key={item.id} item={item} />
-        ))}
-      </div>
-      <button disabled={isLoadingMore || isReachingEnd} onClick={loadMore}>
-        {isLoadingMore ? 'Loading...' : isReachingEnd ? 'No More Items' : 'Load More'}
-      </button>
-    </div>
-  );
-}import React from "react";
 // import { ReactPhotoCollage } from "react-photo-collage";
 import { motion } from "framer-motion";
 import { StoreItem } from "@/components/Shopping/StoreItem";
