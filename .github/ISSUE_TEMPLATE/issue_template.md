@@ -1,4 +1,4 @@
-1. name: GitAuto Issue
+name: GitAuto Issue
 description: For small bugs, features, refactors, and tests to be handled by GitAuto, an AI-powered junior developer.
 labels: gitauto
 body:
