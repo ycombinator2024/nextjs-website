@@ -1,4 +1,23 @@
 import MobileDrawer from "./MobileDrawer";
+import MobileDrawer from "./MobileDrawer";
+import { BsCartPlus } from "react-icons/bs";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
+import { useState } from "react";
+import HamburgerMenu from "./HamburgerMenu";
+
+export default function MobileNav() {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const { openCart, cartQuantity, closeCart, cartItems, isOpen } =
+    useShoppingCart();
+  return (
+    <div className="flex items-center ml:hidden">
+      <HamburgerMenu setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
+      <MobileDrawer setIsNavOpen={setIsNavOpen} isNavOpen={isNavOpen} />
+    </div>
+  );
+}
+
 import { BsCartPlus } from "react-icons/bs";
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import { useState } from "react";
