@@ -1,4 +1,71 @@
 import {
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalCloseButton,
+  ModalBody,
+  Checkbox,
+  useToast,
+  Spinner,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import createErrorToast from "../Toast/createErrorToast";
+import createSuccessToast from "../Toast/createSuccessToast";
+
+export default function JoinModal({ isOpen, onClose }: any) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [childrenInfo, setChildrenInfo] = useState("");
+  const [subscribe, setSubscribe] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const toast = useToast();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+    const response = await fetch("/api/join-us", {
+      method: "POST",
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone,
+        childrenInfo: childrenInfo,
+        subscribe: subscribe,
+      }),
+    });
+    const res = await response.json();
+    if (response.ok) {
+      createSuccessToast(toast, "Form sent successfully!");
+      setEmail("");
+      setName("");
+      setPhone("");
+      setChildrenInfo("");
+      setSubscribe(false);
+      onClose();
+    } else {
+      createErrorToast(toast, res.message);
+    }
+    setIsLoading(false);
+    return await res;
+  }
+
+  const inputStyles =
+    "text-lg footerSM:text-xl mt-2 bg-white outline-none  border-2 rounded-lg focus:ring-2 focus:border-transparent";
+  const labelStyles = "text-base footerSM:text-lg";
+  return (
+    <Modal isOpen={isOpen} onClose={onClose} preserveScrollBarGap={true}>
+      <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(1px)" />
+      <ModalContent>
+        <ModalCloseButton />
+
+        <ModalBody>
+          <form
+            className="flex flex-col my-8"
+            onSubmit={(e) => handleSubmit(e)}
+          >
+            <label className={` ${labelStyles}`}>
   Modal,
   ModalOverlay,
   ModalContent,
