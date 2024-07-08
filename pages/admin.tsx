@@ -5,10 +5,109 @@ import useSWR from "swr";
 import { convertDate } from "@/utils/mapping";
 import Image from "next/image";
 
+import { createErrorToast, createSuccessToast } from '@/components/Toast';
 import { motion } from "framer-motion";
+import { useToast } from '@chakra-ui/react';
 import { Spinner } from "@chakra-ui/react";
 import LoadingSpinner from "@/components/LoadingSpinner";
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+ 
 import { BsTrash3, BsYoutube } from "react-icons/bs";
+  const toast = useToast();
+  const { data: photosData, error: photosError, mutate: mutatePhotos } = useSWR('/api/photos/get-cloudinary-photos', fetcher);
+  const [newFolderName, setNewFolderName] = useState('');
+  const [selectedFolder, setSelectedFolder] = useState('');
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
+
+  const handleCreateFolder = async () => {
+    try {
+      await fetch('/api/photos/create-folder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ folderName: newFolderName })
+      });
+      createSuccessToast(toast, 'Folder created successfully');
+      mutatePhotos();
+    } catch (error) {
+      createErrorToast(toast, 'Failed to create folder');
+    }
+  };
+
+  const handlePhotoUpload = async () => {
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      try {
+        await fetch('/api/photos/upload-photo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ folderName: selectedFolder, file: reader.result })
+        });
+        createSuccessToast(toast, 'Photo uploaded successfully');
+        mutatePhotos();
+      } catch (error) {
+        createErrorToast(toast, 'Failed to upload photo');
+      }
+    };
+    if (photoFile) {
+      reader.readAsDataURL(photoFile);
+    }
+  };
+
+  if (photosError) {
+    return <div>Failed to load photos.</div>;
+  }
+ 
+  return (
+    <div>
+      <div>
+        <h2>Manage Cloudinary Photos</h2>
+        {photosData ? (
+          <div>
+            <h3>Folders:</h3>
+            <ul>
+              {photosData.folders.map((folder: any) => (
+                <li key={folder.path}>{folder.name}</li>
+              ))}
+            </ul>
+            <h3>Images:</h3>
+            <ul>
+              {photosData.images.map((image: any) => (
+                <li key={image.public_id}>
+                  <img src={image.secure_url} alt={image.public_id} width={50} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div>Loading...</div>
+        )}
+        <div>
+          <input
+            type="text"
+            value={newFolderName}
+            onChange={(e) => setNewFolderName(e.target.value)}
+            placeholder="New Folder Name"
+          />
+          <button onClick={handleCreateFolder}>Create Folder</button>
+        </div>
+        <div>
+          <input type="file" onChange={(e) => setPhotoFile(e.target.files?.[0] || null)} />
+          <select value={selectedFolder} onChange={(e) => setSelectedFolder(e.target.value)}>
+            <option value="">Select Folder</option>
+            {photosData?.folders.map((folder: any) => (
+              <option key={folder.path} value={folder.path}>{folder.name}</option>
+            ))}
+          </select>
+          <button onClick={handlePhotoUpload}>Upload Photo</button>
+        </div>
+      </div>
+    </div>
+  );
+
 
 import DatePicker from "react-datepicker";
 
