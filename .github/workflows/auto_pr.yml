@@ -1,5 +1,7 @@
 name: Auto PR Creation
 on:
+    - name: Add Feature Request Comment
+      run: gh pr comment ${{ steps.extract-branch.outputs.BRANCH}} --body "## What is the feature\n\nThe feature is not clearly described in the issue. The issue title and body both contain 'xcv', which does not provide any information about the feature request.\n\n## Why we need the feature\n\nSince the feature is not described, it is unclear why it is needed. Please provide more details about the feature request to understand its necessity.\n\n## How to implement and why\n\nWithout a clear description of the feature, it is challenging to provide a step-by-step implementation plan. Please update the issue with more information about the feature, its purpose, and any specific requirements or constraints."
   issue_comment:
     types: [created]
 jobs:
