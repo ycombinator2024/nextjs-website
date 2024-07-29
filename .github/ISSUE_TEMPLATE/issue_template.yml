@@ -1,3 +1,4 @@
+# Trivial change for workflow verification
 name: "GitAuto Issue"
 description: "For small bugs, features, refactors, and tests to be handled by Sweep, an AI-powered junior developer."
 body: yo
