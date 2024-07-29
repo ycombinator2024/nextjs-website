@@ -1,3 +1,4 @@
+# Trivial change for workflow verification
 # Pull Request Template
 
 Choose one of the following templates based on the nature of the pull request:
