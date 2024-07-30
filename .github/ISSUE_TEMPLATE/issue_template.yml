@@ -1,3 +1,22 @@
 name: "GitAuto Issue"
 description: "For small bugs, features, refactors, and tests to be handled by Sweep, an AI-powered junior developer."
 body: yo
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Provide a clear and concise description of the test issue.
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Test
+      description: List the steps to follow for running the test components.
+  - type: dropdown
+    id: importance
+    attributes:
+      label: Importance
+      description: Select the importance level of the test.
+      options:
+        - Low
+        - Medium
+        - High
