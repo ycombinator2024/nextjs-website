@@ -13,5 +13,10 @@ Describe the underlying cause of the bug.
 Step-by-step guide to replicate the bug.
 
 ### How to fix
+## Test Issues
+
+If this PR addresses a test issue, please provide the test steps:
+
+- Steps to test the changes
 
 Proposed changes to resolve the bug.
