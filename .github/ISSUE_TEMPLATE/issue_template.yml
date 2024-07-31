@@ -1,3 +1,15 @@
+name: Test issue
+description: Use this template for test issues.
+title: Test issue
+labels: ['test']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This template is used for creating test issues.
+  - type: textarea
+    attributes:
+      label: Description
 name: "GitAuto Issue"
 description: "For small bugs, features, refactors, and tests to be handled by Sweep, an AI-powered junior developer."
 body: yo
