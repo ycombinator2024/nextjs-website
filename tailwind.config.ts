@@ -26,6 +26,7 @@ module.exports = {
       lightHover: "#E0E0E0",
       analogueBlue: "#0900FF",
     },
+      newColor: "#123456",
     fontFamily: {
       sans: ["sans-serif", "sans-serif"],
       serif: ["Georgia", "serif"],
